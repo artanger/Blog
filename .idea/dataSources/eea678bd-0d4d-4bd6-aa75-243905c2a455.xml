@@ -22,38 +22,42 @@
     </column>
     <column id="12" parent="9" name="title">
       <Position>2</Position>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>varchar(500)|0</DataType>
     </column>
     <column id="13" parent="9" name="text">
       <Position>3</Position>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>varchar(32766)|0</DataType>
     </column>
     <column id="14" parent="9" name="time">
       <Position>4</Position>
       <DataType>datetime|0</DataType>
     </column>
-    <key id="15" parent="9" name="PRIMARY">
+    <column id="15" parent="9" name="userId">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="16" parent="9" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="16" parent="10" name="id">
+    <column id="17" parent="10" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="17" parent="10" name="username">
+    <column id="18" parent="10" name="username">
       <Position>2</Position>
       <DataType>varchar(10)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="18" parent="10" name="password">
+    <column id="19" parent="10" name="password">
       <Position>3</Position>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="19" parent="10" name="PRIMARY">
+    <key id="20" parent="10" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

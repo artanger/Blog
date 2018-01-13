@@ -14,31 +14,77 @@
 </head>
 <body>
 
-<div class="container">
-    <div class="row bg-primary">
-        <div class="col-sm-2 ">
-            <h1>1</h1>
+
+
+<div class="container-fluid">
+    <div class="row content">
+        <div class="col-sm-3 ">
+            <h4>John's Blog</h4>
+            <img class="card-img-top" src="http://placehold.it/445x290" alt="Card image cap">
+            <div class="card" style="width: 28rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
         </div>
     </div>
 
-</div>
+        <div class="col-sm-9">
+            <h4><small>RECENT POSTS</small></h4>
+            <hr>
+            <h2>I Love Food</h2>
+            <h5><span class="glyphicon glyphicon-time"></span> Post by Jane Dane, Sep 27, 2015.</h5>
+            <h5><span class="label label-danger">Food</span> <span class="label label-primary">Ipsum</span></h5><br>
+            <p>Food is my passion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <br><br>
 
-<div class="container">
-    <div class="row bg-success">
-        <div class="col-md-3 md-auto">
-            <h4>Profile User</h4>
-        </div>
+            <h4><small>RECENT POSTS</small></h4>
+            <hr>
+            <h2>Officially Blogging</h2>
+            <h5><span class="glyphicon glyphicon-time"></span> Post by John Doe, Sep 24, 2015.</h5>
+            <h5><span class="label label-success">Lorem</span></h5><br>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <hr>
 
-        <div class="col-md-3 md-auto">
-            <h4>Posts</h4>
+                <h4>Leave a Comment:</h4>
+                <form role="form">
+                    <div class="form-group">
+                        <textarea class="form-control" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </form>
+                <br><br>
+
+            <p><span class="badge">2</span> Comments:</p><br>
+
+            <div class="row">
+                <div class="media">
+                    <img class="mr-3" src="..." alt="Generic placeholder image">
+                    <div class="media-body">
+                        <h5 class="mt-0">Media heading</h5>
+                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+
+                        <div class="media mt-3">
+                            <a class="pr-3" href="#">
+                                <img src="..." alt="Generic placeholder image">
+                            </a>
+                            <div class="media-body">
+                                <h5 class="mt-0">Media heading</h5>
+                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-
-
-
-
+<footer class="container-fluid">
+    <p>Footer Text</p>
+</footer>
 
 
 
