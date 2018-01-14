@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 import static java.lang.System.out;
@@ -57,7 +58,10 @@ public class PostServlet extends HttpServlet {
                 String title = req.getParameter("title");
                 String text = req.getParameter("text");
                 if (title != null) {
-                    postSource.addPost(new Post(-1, title, text));
+                    Post addedPost = new Post(-1, title, text);
+                    addedPost.setUserId(1);   // temporary userId = 1
+                    addedPost.setTime(LocalDateTime.now());
+                    postSource.addPost(addedPost);
                 }
             } else if ("deletepost".equalsIgnoreCase(action)) {
                 String postId = req.getParameter("postid");

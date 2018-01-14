@@ -24,6 +24,8 @@
         <th scope="col">#</th>
         <th scope="col">Title</th>
         <th scope="col">Text</th>
+        <th scope="col">Date</th>
+        <th scope="col">UserId</th>
         <th scope="col">Edit</th>
         <th scope="col">Delete</th>
     </tr>
@@ -34,6 +36,8 @@
         <td><%=p.getId()%></td>
         <td><%=p.getTitle()%></td>
         <td><%=p.getShortText()%></td>
+        <td><%=p.getTime()%></td>
+        <td><%=p.getUserId()%></td>
         <td><a href="?action=editpost&postid=<%=p.getId()%>"  class="btn btn-link">Edit</a></td>
         <td>
             <form method="post">

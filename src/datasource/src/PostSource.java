@@ -33,11 +33,19 @@ public class PostSource extends DatabaseConnection implements PostDataSource {
             ResultSet resultSet = stmt.executeQuery("SELECT * FROM post");
 
             while (resultSet.next()){
-                posts.add(new Post(
-                        resultSet.getInt("id"),
-                        resultSet.getString("title"),
-                        resultSet.getString("text")
-                ));
+                Post postRow = new Post(resultSet.getInt("id"), resultSet.getString("title"),  resultSet.getString("text"));
+
+                Timestamp timeDbValue = resultSet.getTimestamp("time");
+                if (timeDbValue != null){
+                    postRow.setTime(resultSet.getTimestamp("time").toLocalDateTime());
+                }
+
+                Integer userIdDbValue = resultSet.getInt("userId");
+                if (userIdDbValue != null && userIdDbValue != -1){
+                    postRow.setUserId(userIdDbValue);
+                }
+
+                posts.add(postRow);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -52,11 +60,19 @@ public class PostSource extends DatabaseConnection implements PostDataSource {
             preparedStatement.setString(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
-                return new Post(
-                        resultSet.getInt("id"),
-                        resultSet.getString("title"),
-                        resultSet.getString("text")
-                );
+                Post postRow = new Post(resultSet.getInt("id"), resultSet.getString("title"),  resultSet.getString("text"));
+
+                Timestamp timeDbValue = resultSet.getTimestamp("time");
+                if (timeDbValue != null){
+                    postRow.setTime(resultSet.getTimestamp("time").toLocalDateTime());
+                }
+
+                Integer userIdDbValue = resultSet.getInt("userId");
+                if (userIdDbValue != null && userIdDbValue != -1){
+                    postRow.setUserId(userIdDbValue);
+                }
+
+                return postRow;
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -69,10 +85,12 @@ public class PostSource extends DatabaseConnection implements PostDataSource {
     @Override
     public void addPost(Post post) {
         try {Connection connection = super.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("insert into post(title, text) values (?, ?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into post(title, text, time, userId) values (?, ?, ?, ?)");
             // Parameters start with 1
-            preparedStatement.setString(1,post.getTitle());
-            preparedStatement.setString(2,post.getText());
+            preparedStatement.setString(1, post.getTitle());
+            preparedStatement.setString(2, post.getText());
+            preparedStatement.setString(3, post.getTime());
+            preparedStatement.setInt(4, post.getUserId());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
