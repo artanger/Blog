@@ -62,7 +62,14 @@
         <!--<welcome-file>Login.jsp</welcome-file>-->
     <!--</welcome-file-list>-->
 
-
+    <filter>
+        <filter-name>authFilter</filter-name>
+        <filter-class>AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>authFilter</filter-name>
+        <url-pattern>/posts</url-pattern>
+    </filter-mapping>
 
 
 
