@@ -33,15 +33,33 @@
     </script>
 </head>
 <body>
-<h1>Add Post</h1>
-<form method="post" action="/posts"  >
-    Title:<input type="text" name="title"> </br>
-    </br>
-    Text:<input type="text" name="text"></br>
-    </br>
-    <input type="submit" value="Add">
-    <input type="hidden" name="action" value="newpost" />
-</form>
+
+
+
+<div class="container">
+    <h2>Add Post</h2>
+    <div class="card ">
+        <div class="card-body">
+            <form method="post" action="/posts" class="form" role="form">
+                <div class="form-group ">
+                    <label  class="col-sm-2 col-form-label">Title</label>
+                    <input type="text" name="title" class="form-control col-12" > </br>
+                </div>
+
+                <div class="form-group">
+                    <label  class="col-sm-2 col-form-label">Text</label>
+                    <input type="text" name="text" class="form-control col-12"></br>
+                </div>
+
+                <input type="submit" value="Add Post" class="btn btn-outline-primary">
+                <input type="hidden" name="action" value="newpost" />
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
 
 <%--<form method="post" action="/posts">--%>
     <%--<div>--%>
