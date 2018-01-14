@@ -60,7 +60,7 @@ public class PostServlet extends HttpServlet {
         protected void doPost (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
             String action = req.getParameter("action");
 
-            if ("addpost".equalsIgnoreCase(action)) {
+            if ("newpost".equalsIgnoreCase(action)) {
                 String title = req.getParameter("title");
                 String text = req.getParameter("text");
                 if (title != null) {

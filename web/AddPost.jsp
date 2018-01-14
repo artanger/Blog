@@ -22,7 +22,7 @@
     </br>
     <textarea>Next, start a free trial!</textarea>
     <input type="submit" value="Add">
-    <input type="hidden" name="action" value="addpost" />
+    <input type="hidden" name="action" value="newpost" />
 </form>
 
 
