@@ -29,7 +29,13 @@ public class PostServlet extends HttpServlet {
 
         if (session != null) {
             String action = req.getParameter("action");
-            if ("editpost".equalsIgnoreCase(action)) {
+
+            if ("addpost".equalsIgnoreCase(action)) {
+                RequestDispatcher dispatcher = req.getRequestDispatcher("AddPost.jsp");
+                dispatcher.forward(req, resp);
+                return;
+            }
+            else if ("editpost".equalsIgnoreCase(action)) {
                 String postId = req.getParameter("postid");
                 Post post = postSource.getPost(postId);
                 req.setAttribute("post", post);
