@@ -40,9 +40,7 @@
     Text:<input type="text" name="text"></br>
     </br>
     <input type="submit" value="Add">
-    <input type="hidden" name="action" value="addpost" />
-
-
+    <input type="hidden" name="action" value="newpost" />
 </form>
 
 <%--<form method="post" action="/posts">--%>
