@@ -1,5 +1,7 @@
 import datasource.src.PostSource;
 import model.Post;
+import model.Principal;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -7,12 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
-
-import static java.lang.System.out;
-
 
 public class PostServlet extends HttpServlet {
 
@@ -20,13 +18,7 @@ public class PostServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        String uri = req.getRequestURI();
-//        String currentPageName = uri.substring(uri.lastIndexOf("/")+1);
-//        if (currentPageName.equalsIgnoreCase("posts")){
-          HttpSession  session = req.getSession();
-        // String name = (String)Session.getAttribute("name");
-
-
+        HttpSession  session = req.getSession();
         if (session != null) {
             String action = req.getParameter("action");
 
@@ -47,13 +39,14 @@ public class PostServlet extends HttpServlet {
             LinkedList<Post> posts = postSource.getPosts();
             req.setAttribute("post", posts);
 
+            Principal principal = (Principal) session.getAttribute("PRINCIPAL");
+            req.setAttribute("shortname", principal.getShortName());
+
             RequestDispatcher dispatcher = req.getRequestDispatcher("Posts.jsp");
             dispatcher.forward(req, resp);
         } else {
             resp.sendRedirect("/login");
         }
-
-
     }
 
         @Override
@@ -80,9 +73,7 @@ public class PostServlet extends HttpServlet {
                 postSource.savePost(new Post(Integer.parseInt(postId), title, text));
 
             }
-//
+
             doGet(req, resp);
         }
-
     }
-

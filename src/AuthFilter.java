@@ -1,3 +1,5 @@
+import datasource.abs.IUserDb;
+import datasource.src.UserDb;
 import model.Principal;
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -8,6 +10,12 @@ import java.io.IOException;
 
 @WebFilter(filterName = "AuthFilter")
 public class AuthFilter implements Filter {
+    private IUserDb userDal;
+
+    public AuthFilter(){
+        this.userDal = new UserDb();
+    }
+
     public void destroy() { }
     public void init(FilterConfig config) throws ServletException { }
 
@@ -17,7 +25,8 @@ public class AuthFilter implements Filter {
         if (principal != null){
             String username = principal.getUsername();
             String password = principal.getPassword();
-            if(password.equals("admin123") && username.equals("admin")){
+            Principal principalDb = this.userDal.getPrincipal(username, password);
+            if(principalDb != null && principal.getUsername().equals(principalDb.getUsername()) && principal.getPassword().equals(principalDb.getPassword())){
                 chain.doFilter(req, resp);
             }
         }

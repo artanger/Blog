@@ -54,6 +54,7 @@ public class PostSource extends DatabaseConnection implements PostDataSource {
         return posts;
     }
 
+    @Override
     public Post getPost(String id) {
         try {Connection connection = super.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM post WHERE id=?");

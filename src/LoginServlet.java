@@ -1,18 +1,23 @@
-import datasource.src.PostSource;
-import model.Post;
+import datasource.abs.IUserDb;
+import datasource.src.StringUtils;
+import datasource.src.UserDb;
 import model.Principal;
 
 import javax.servlet.RequestDispatcher;
-        import javax.servlet.ServletException;
-        import javax.servlet.http.HttpServlet;
-        import javax.servlet.http.HttpServletRequest;
-        import javax.servlet.http.HttpServletResponse;
-        import javax.servlet.http.HttpSession;
-        import java.io.IOException;
-        import java.io.PrintWriter;
-import java.util.LinkedList;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class LoginServlet extends HttpServlet {
+    private IUserDb userDal;
+
+    public LoginServlet(){
+        this.userDal = new UserDb();
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,16 +35,16 @@ public class LoginServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
-        if ((username != null && password != null) && (username.equals("admin") && password.equals("admin123")) ) {
-            HttpSession session = req.getSession();
-            Principal principal = new Principal( username, password, username);
-            session.setAttribute("PRINCIPAL", principal);
-            resp.sendRedirect("/posts");
-        }
-        else {
-            try (PrintWriter out = resp.getWriter()) {
-                out.println("<b>username or password does not exist</b>");
+        if (!StringUtils.isNullOrWhitespace(username) && !StringUtils.isNullOrWhitespace(password)) {
+            Principal principal = this.userDal.getPrincipal(username, password);
+            if (principal != null){
+                HttpSession session = req.getSession();
+                session.setAttribute("PRINCIPAL", principal);
+                resp.sendRedirect("/posts");
             }
+        }
+        try (PrintWriter out = resp.getWriter()) {
+            out.println("<b>username or password does not exist</b>");
         }
     }
 }

@@ -5,6 +5,7 @@ public class Principal {
     private final String username;
     private final String password;
     private String shortName;
+    private int userId;
 
     public Principal(String username, String password, String shortName){
         this.username = username;
@@ -28,5 +29,11 @@ public class Principal {
         this.shortName = shortName;
     }
 
+    public int getUserId() {
+        return userId;
+    }
 
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 }
