@@ -1,18 +1,38 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Arthur
-  Date: 09.01.2018
-  Time: 14:26
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Add Post</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-    <script type="text/javascript" src="tiny_mce/tiny_mce.js"></script>
-    <script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" crossorigin="anonymous">
+</head>
+<body>
+<jsp:include page="AdminPostHeader.jsp" />
+<div class="container">
+    <h2>Add Post</h2>
+    <div class="row">
+        <div class="col">
+            <form method="post" action="/posts" class="form" role="form">
+                <div class="form-group ">
+                    <label  class="col-sm-2 col-form-label">Title</label>
+                    <input type="text" name="title" class="form-control col-12" > </br>
+                </div>
+
+                <div class="form-group">
+                    <label  class="col-sm-2 col-form-label">Text</label>
+                    <textarea rows="4" name="text" id="text" class="form-control col-12"></textarea>
+                </div>
+
+                <input type="submit" value="Add Post" class="btn btn-outline-primary">
+                <input type="hidden" name="action" value="newpost" />
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="tinymce_4.7.4/tinymce/js/tinymce/tinymce.min.js"></script>
+<script>
     tinymce.init({
         selector: 'textarea',
         height: 500,
@@ -28,63 +48,6 @@
             '//www.tinymce.com/css/codepen.min.css'
         ]
     });
-
-
-    </script>
-</head>
-<body>
-
-
-
-<div class="container">
-    <h2>Add Post</h2>
-    <div class="card ">
-        <div class="card-body">
-            <form method="post" action="/posts" class="form" role="form">
-                <div class="form-group ">
-                    <label  class="col-sm-2 col-form-label">Title</label>
-                    <input type="text" name="title" class="form-control col-12" > </br>
-                </div>
-
-                <div class="form-group">
-                    <label  class="col-sm-2 col-form-label">Text</label>
-                    <input type="text" name="text" class="form-control col-12"></br>
-                </div>
-
-                <input type="submit" value="Add Post" class="btn btn-outline-primary">
-                <input type="hidden" name="action" value="newpost" />
-            </form>
-        </div>
-    </div>
-</div>
-
-
-
-
-<%--<form method="post" action="/posts">--%>
-    <%--<div>--%>
-      <%--<textarea cols="80" rows="10" id="articleContent" name="articleContent">--%>
-        <%--&lt;h1&gt;Article Title&lt;/h1&gt;--%>
-        <%--&lt;p&gt;Here's some sample text&lt;/p&gt;--%>
-      <%--</textarea>--%>
-        <%--<script type="text/javascript">--%>
-            <%--tinyMCE.init({--%>
-                <%--theme : "advanced",--%>
-                <%--theme_advanced_toolbar_location : "top",--%>
-                <%--theme_advanced_toolbar_align : "left",--%>
-                <%--mode : "exact",--%>
-                <%--elements : "articleContent"--%>
-            <%--});--%>
-        <%--</script>--%>
-       <%----%>
-    <%--</div>--%>
-<%--</form>--%>
-
-
-<script type="text/javascript" src="plugin/tinymce/tinymce.min.js"></script>
-<script type="text/javascript" src="plugin/tinymce/init-tinymce.js"></script>
-
-<script src="jquery.min.js"></script>
-<script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+</script>
 </body>
 </html>

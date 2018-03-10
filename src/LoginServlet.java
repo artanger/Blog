@@ -41,6 +41,8 @@ public class LoginServlet extends HttpServlet {
                 HttpSession session = req.getSession();
                 session.setAttribute("PRINCIPAL", principal);
                 resp.sendRedirect("/posts");
+               // RequestDispatcher dispatcher = req.getRequestDispatcher("Posts.jsp");
+               // dispatcher.forward(req, resp);
             }
         }
         try (PrintWriter out = resp.getWriter()) {

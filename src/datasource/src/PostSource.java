@@ -3,7 +3,6 @@ package datasource.src;
 import datasource.abs.PostDataSource;
 import datasource.base.DatabaseConnection;
 import model.Post;
-
 import java.sql.*;
 import java.util.LinkedList;
 
@@ -24,29 +23,31 @@ public class PostSource extends DatabaseConnection implements PostDataSource {
     }
 
     @Override
-    public LinkedList<Post> getPosts() {
+    public LinkedList<Post> getPosts(int userId) {
+        LinkedList<Post> posts = new LinkedList<>();
 
+        try {Connection connection = super.getConnection();
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM post WHERE userId = ?");
+            stmt.setInt(1, userId);
+            ResultSet resultSet = stmt.executeQuery();
+            retrievePostRows(posts, resultSet);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return posts;
+    }
+
+    @Override
+    public LinkedList<Post> getPosts() {
         LinkedList<Post> posts = new LinkedList<>();
 
         try (Connection connection = super.getConnection();
             Statement stmt = connection.createStatement()) {
             ResultSet resultSet = stmt.executeQuery("SELECT * FROM post");
 
-            while (resultSet.next()){
-                Post postRow = new Post(resultSet.getInt("id"), resultSet.getString("title"),  resultSet.getString("text"));
-
-                Timestamp timeDbValue = resultSet.getTimestamp("time");
-                if (timeDbValue != null){
-                    postRow.setTime(resultSet.getTimestamp("time").toLocalDateTime());
-                }
-
-                Integer userIdDbValue = resultSet.getInt("userId");
-                if (userIdDbValue != null && userIdDbValue != -1){
-                    postRow.setUserId(userIdDbValue);
-                }
-
-                posts.add(postRow);
-            }
+            retrievePostRows(posts, resultSet);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -60,21 +61,8 @@ public class PostSource extends DatabaseConnection implements PostDataSource {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM post WHERE id=?");
             preparedStatement.setString(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
-                Post postRow = new Post(resultSet.getInt("id"), resultSet.getString("title"),  resultSet.getString("text"));
-
-                Timestamp timeDbValue = resultSet.getTimestamp("time");
-                if (timeDbValue != null){
-                    postRow.setTime(resultSet.getTimestamp("time").toLocalDateTime());
-                }
-
-                Integer userIdDbValue = resultSet.getInt("userId");
-                if (userIdDbValue != null && userIdDbValue != -1){
-                    postRow.setUserId(userIdDbValue);
-                }
-
-                return postRow;
-            }
+            Post postRow = retrievePostRow(resultSet);
+            if (postRow != null) return postRow;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -109,5 +97,42 @@ public class PostSource extends DatabaseConnection implements PostDataSource {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    private void retrievePostRows(LinkedList<Post> posts, ResultSet resultSet) throws SQLException {
+        while (resultSet.next()){
+            Post postRow = new Post(resultSet.getInt("id"), resultSet.getString("title"),  resultSet.getString("text"));
+
+            Timestamp timeDbValue = resultSet.getTimestamp("time");
+            if (timeDbValue != null){
+                postRow.setTime(resultSet.getTimestamp("time").toLocalDateTime());
+            }
+
+            Integer userIdDbValue = resultSet.getInt("userId");
+            if (userIdDbValue != null && userIdDbValue != -1){
+                postRow.setUserId(userIdDbValue);
+            }
+
+            posts.add(postRow);
+        }
+    }
+
+    private Post retrievePostRow(ResultSet resultSet) throws SQLException {
+        while (resultSet.next()){
+            Post postRow = new Post(resultSet.getInt("id"), resultSet.getString("title"),  resultSet.getString("text"));
+
+            Timestamp timeDbValue = resultSet.getTimestamp("time");
+            if (timeDbValue != null){
+                postRow.setTime(resultSet.getTimestamp("time").toLocalDateTime());
+            }
+
+            Integer userIdDbValue = resultSet.getInt("userId");
+            if (userIdDbValue != null && userIdDbValue != -1){
+                postRow.setUserId(userIdDbValue);
+            }
+
+            return postRow;
+        }
+        return null;
     }
 }

@@ -1,3 +1,4 @@
+import datasource.abs.PostDataSource;
 import datasource.src.PostSource;
 import model.Post;
 import model.Principal;
@@ -13,44 +14,61 @@ import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 public class PostServlet extends HttpServlet {
+    private PostDataSource postSource;
 
-    PostSource postSource = new PostSource();
+    public PostServlet(){
+        postSource = new PostSource();
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession  session = req.getSession();
-        if (session != null) {
-            String action = req.getParameter("action");
+        try {
+            HttpSession  session = req.getSession();
+            if (session != null) {
+                Principal principal = (Principal) session.getAttribute("PRINCIPAL");
+                req.setAttribute("shortname", principal.getShortName());
+                Integer userId = principal.getUserId();
 
-            if ("addpost".equalsIgnoreCase(action)) {
-                RequestDispatcher dispatcher = req.getRequestDispatcher("AddPost.jsp");
+                String action = req.getParameter("action");
+
+                if ("addpost".equalsIgnoreCase(action)) {
+                    RequestDispatcher dispatcher = req.getRequestDispatcher("AddPost.jsp");
+                    dispatcher.forward(req, resp);
+                    return;
+                }
+                else if ("editpost".equalsIgnoreCase(action)) {
+                    String postId = req.getParameter("postid");
+                    Post post = postSource.getPost(postId);
+                    req.setAttribute("post", post);
+                    RequestDispatcher dispatcher = req.getRequestDispatcher("EditPost.jsp");
+                    dispatcher.forward(req, resp);
+                    return;
+                }
+
+                LinkedList<Post> posts;
+                if (userId != null){
+                    posts = postSource.getPosts(userId);
+                } else {
+                    posts = postSource.getPosts();
+                }
+
+                req.setAttribute("post", posts);
+
+                RequestDispatcher dispatcher = req.getRequestDispatcher("Posts.jsp");
                 dispatcher.forward(req, resp);
-                return;
+            } else {
+                resp.sendRedirect("/login");
             }
-            else if ("editpost".equalsIgnoreCase(action)) {
-                String postId = req.getParameter("postid");
-                Post post = postSource.getPost(postId);
-                req.setAttribute("post", post);
-                RequestDispatcher dispatcher = req.getRequestDispatcher("EditPost.jsp");
-                dispatcher.forward(req, resp);
-                return;
-            }
+        } catch (Exception e) {
 
-            LinkedList<Post> posts = postSource.getPosts();
-            req.setAttribute("post", posts);
-
-            Principal principal = (Principal) session.getAttribute("PRINCIPAL");
-            req.setAttribute("shortname", principal.getShortName());
-
-            RequestDispatcher dispatcher = req.getRequestDispatcher("Posts.jsp");
-            dispatcher.forward(req, resp);
-        } else {
-            resp.sendRedirect("/login");
+            String message = e.getMessage();
         }
+
     }
 
-        @Override
-        protected void doPost (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    @Override
+    protected void doPost (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
             String action = req.getParameter("action");
 
             if ("newpost".equalsIgnoreCase(action)) {
@@ -75,5 +93,10 @@ public class PostServlet extends HttpServlet {
             }
 
             doGet(req, resp);
+        } catch (Exception e) {
+
+            String message = e.getMessage();
         }
+
     }
+}

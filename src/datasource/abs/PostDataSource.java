@@ -8,6 +8,8 @@ public interface PostDataSource {
 
     LinkedList<Post> getPosts();
 
+    LinkedList<Post> getPosts(int userId);
+
     void addPost (Post post);
 
     void savePost (Post post);
