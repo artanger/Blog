@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<nav class="navbar navbar sticky-top navbar-toggleable-md navbar-inverse bg-inverse">
+<nav class="posts-header navbar navbar sticky-top navbar-toggleable-md navbar-inverse bg-inverse">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -7,7 +7,7 @@
 
     <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active"><a href="${pageContext.request.contextPath}/posts" class="nav-link">Admin Home</a></li>
+            <li class="nav-item"><a href="${pageContext.request.contextPath}/posts" class="nav-link">Admin Home</a></li>
             <li class="nav-item"><a class="nav-link" href="#">About</a></li>
             <li class="nav-item"><a href="${pageContext.request.contextPath}/posts?action=addpost" class="nav-link">Add Post</a></li>
         </ul>
