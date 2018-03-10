@@ -36,8 +36,18 @@
         <servlet-name>PostServlet</servlet-name>
         <url-pattern>/posts</url-pattern>
     </servlet-mapping>
-    
-    
+
+    <servlet>
+        <servlet-name>ProfileServlet</servlet-name>
+        <servlet-class>ProfileServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ProfileServlet</servlet-name>
+        <url-pattern>/currentprofile</url-pattern>
+    </servlet-mapping>
+
+
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>LoginServlet</servlet-class>
@@ -69,6 +79,7 @@
     <filter-mapping>
         <filter-name>authFilter</filter-name>
         <url-pattern>/posts</url-pattern>
+        <url-pattern>/currentprofile</url-pattern>
     </filter-mapping>
 
 

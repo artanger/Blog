@@ -2,8 +2,8 @@ package model;
 
 public class Principal {
 
-    private final String username;
-    private final String password;
+    private String username;
+    private String password;
     private String shortName;
     private int userId;
 
@@ -11,6 +11,9 @@ public class Principal {
         this.username = username;
         this.password = password;
         this.shortName = shortName;
+    }
+
+    public Principal() {
     }
 
     public String getUsername() {
@@ -33,7 +36,5 @@ public class Principal {
         return userId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
+    public void setUserId(int userId) { this.userId = userId; }
 }

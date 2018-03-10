@@ -27,3 +27,12 @@ out/*
 /.idea/misc.xml
 /.idea/workspace.xml
 /TestServlet.iml
+.idea/artifacts/web_war_exploded.xml
+.idea/copyright/profiles_settings.xml
+.idea/dataSources.local.xml
+.idea/dataSources.xml
+.idea/description.html
+.idea/modules.xml
+.idea/project-template.xml
+.idea/scopes/scope_settings.xml
+.idea/vcs.xml

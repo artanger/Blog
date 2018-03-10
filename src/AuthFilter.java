@@ -21,16 +21,17 @@ public class AuthFilter implements Filter {
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
         HttpSession session = ((HttpServletRequest)req).getSession();
-        Principal principal = (Principal) session.getAttribute("PRINCIPAL");
-        if (principal != null){
-            String username = principal.getUsername();
-            String password = principal.getPassword();
-            Principal principalDb = this.userDal.getPrincipal(username, password);
-            if(principalDb != null && principal.getUsername().equals(principalDb.getUsername()) && principal.getPassword().equals(principalDb.getPassword())){
-                chain.doFilter(req, resp);
+        if (session != null) {
+            Principal principal = (Principal) session.getAttribute("PRINCIPAL");
+            if (principal != null){
+                String username = principal.getUsername();
+                String password = principal.getPassword();
+                Principal principalDb = this.userDal.getPrincipal(username, password);
+                if(principalDb != null && principal.getUsername().equals(principalDb.getUsername()) && principal.getPassword().equals(principalDb.getPassword())){
+                    chain.doFilter(req, resp);
+                }
             }
         }
-
         ((HttpServletResponse)resp).sendRedirect("/login");
     }
 }

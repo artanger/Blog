@@ -14,7 +14,7 @@
         <form class="form-inline">
             <input class="form-control mr-sm-2" type="text" placeholder="Search">
             <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-            <a class="nav-link" href="#">Welcome <%=request.getAttribute("shortname")%></a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/currentprofile">Welcome <%=request.getAttribute("shortname")%></a>
         </form>
     </div>
 </nav>

@@ -60,10 +60,8 @@ public class PostServlet extends HttpServlet {
                 resp.sendRedirect("/login");
             }
         } catch (Exception e) {
-
             String message = e.getMessage();
         }
-
     }
 
     @Override
@@ -94,9 +92,7 @@ public class PostServlet extends HttpServlet {
 
             doGet(req, resp);
         } catch (Exception e) {
-
             String message = e.getMessage();
         }
-
     }
 }
