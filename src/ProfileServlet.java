@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.time.LocalDateTime;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class ProfileServlet extends HttpServlet {
     private IUserDb userDal;
@@ -48,7 +51,15 @@ public class ProfileServlet extends HttpServlet {
                 String lastname = req.getParameter("lastname");
                 String highlight = req.getParameter("highlight");
                 String description = req.getParameter("description");
+
                 Profile profile = new Profile(Integer.parseInt(userId),firstname, lastname);
+
+                try {
+                    Date birthdate = new SimpleDateFormat("MM/dd/yyyy").parse(req.getParameter("birthdate"));
+                    profile.setBirthDate(birthdate);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 profile.setHightlight(highlight);
                 profile.setDescription(description);
                 profile.setProfileId(Integer.parseInt(userId));

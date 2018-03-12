@@ -6,6 +6,7 @@ import model.Principal;
 import model.Profile;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 
 public class UserDb  extends DatabaseConnection implements IUserDb {
     @Override
@@ -49,12 +50,13 @@ public class UserDb  extends DatabaseConnection implements IUserDb {
                 String lastNameValue = resultSet.getString("lastname");
                 String highlightValue = resultSet.getString("highlight");
                 String descriptionValue = resultSet.getString("description");
+                Date birthdateValue = resultSet.getDate("birthdate");
 
                 Profile profileRow = new Profile(profileId, firstNameValue, lastNameValue);
                 profileRow.setUserId(profileId);
                 profileRow.setHightlight(highlightValue);
                 profileRow.setDescription(descriptionValue);
-                profileRow.setDescription(descriptionValue);
+                profileRow.setBirthDate(birthdateValue);
 
                 String shortNameValue = resultSet.getString("firstname") + " " + resultSet.getString("lastname");
                 if (StringUtils.isNullOrWhitespace(shortNameValue)){
@@ -81,10 +83,11 @@ public class UserDb  extends DatabaseConnection implements IUserDb {
             preparedStatement.setInt(3, profile.getUserId());
             preparedStatement.executeUpdate();
 
-            PreparedStatement preparedStatementTwo = connection.prepareStatement("UPDATE profile SET  highlight = ?, description = ? WHERE id = ?");
+            PreparedStatement preparedStatementTwo = connection.prepareStatement("UPDATE profile SET  highlight = ?, description = ?,birthdate = ? WHERE id = ?");
             preparedStatementTwo.setString(1, profile.getHighlight());
             preparedStatementTwo.setString(2, profile.getDescription());
             preparedStatementTwo.setInt(3, profile.getProfileId());
+            preparedStatementTwo.setDate(4,new java.sql.Date(profile.getBirthDate().getTime()));
             preparedStatementTwo.executeUpdate();
 
         } catch (SQLException e) {

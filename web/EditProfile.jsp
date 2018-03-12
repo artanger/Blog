@@ -27,6 +27,11 @@
                     <input class="form-control col-12"  type="text" name="highlight" id="highlight" value="<%=profileModel.getHighlight()%>">
                 </div>
                 <div class="form-group">
+                    <label class="col-sm-2 col-form-label">Birthdate</label>
+                    <input class="form-control col-12"  type="text" name="birthdate" id="birthdate" value="<%=profileModel.getBirthDate()%>">
+                </div>
+
+                <div class="form-group">
                     <label class="col-sm-2 col-form-label">Description</label>
                     <textarea rows="4" name="description" id="description" class="form-control col-12"><%=profileModel.getDescription()%></textarea>
                     </br>
