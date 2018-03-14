@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 
 public class ProfileServlet extends HttpServlet {
@@ -55,7 +56,8 @@ public class ProfileServlet extends HttpServlet {
                 Profile profile = new Profile(Integer.parseInt(userId),firstname, lastname);
 
                 try {
-                    Date birthdate = new SimpleDateFormat("MM/dd/yyyy").parse(req.getParameter("birthdate"));
+                    String birtDateStr = req.getParameter("birthdate");
+                    Date birthdate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US).parse(birtDateStr + " 00:00:00");
                     profile.setBirthDate(birthdate);
                 } catch (ParseException e) {
                     e.printStackTrace();

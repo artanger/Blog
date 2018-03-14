@@ -86,8 +86,9 @@ public class UserDb  extends DatabaseConnection implements IUserDb {
             PreparedStatement preparedStatementTwo = connection.prepareStatement("UPDATE profile SET  highlight = ?, description = ?,birthdate = ? WHERE id = ?");
             preparedStatementTwo.setString(1, profile.getHighlight());
             preparedStatementTwo.setString(2, profile.getDescription());
-            preparedStatementTwo.setInt(3, profile.getProfileId());
-            preparedStatementTwo.setDate(4,new java.sql.Date(profile.getBirthDate().getTime()));
+            preparedStatementTwo.setDate(3, new java.sql.Date(profile.getBirthDate().getTime()));
+            preparedStatementTwo.setInt(4, profile.getProfileId());
+            
             preparedStatementTwo.executeUpdate();
 
         } catch (SQLException e) {

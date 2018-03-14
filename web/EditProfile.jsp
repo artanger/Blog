@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 col-form-label">Birthdate</label>
-                    <input class="form-control col-12"  type="text" name="birthdate" id="birthdate" value="<%=profileModel.getBirthDate()%>">
+                    <input class="form-control col-12 datepicker"  type="date" name="birthdate" id="birthdate" value="<%=profileModel.getBirthDate()%>">
                 </div>
 
                 <div class="form-group">
