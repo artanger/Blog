@@ -1,0 +1,70 @@
+body {
+    background: #353535;
+    color: #c4c4c4;
+    font-family: "Raleway", sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.45;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.main-content {
+    padding: 10%;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 80%;
+    flex: 1 1 80%;
+    min-height: 100vh;
+}
+
+.portfolio {
+    display: grid;
+    height: 100%;
+    grid-template-rows: repeat(7, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 20px;
+}
+
+.portfolio-item {
+    background: #f96855;
+    color: #c4c4c4;
+    font-weight: 700;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 1.5em;
+    background-size: cover;
+    background-position: top left;
+    -webkit-transition: all ease-in-out 300ms;
+    transition: all ease-in-out 300ms;
+    position: relative;
+    z-index: 10;
+}
+.portfolio-item.small {
+    grid-row: span 1;
+    grid-column: span 1;
+}
+.portfolio-item.medium {
+    grid-row: span 2;
+    grid-column: span 2;
+}
+.portfolio-item.large {
+    grid-row: span 3;
+    grid-column: span 3;
+}
+.portfolio-item.tall {
+    grid-row: span 3;
+    grid-column: span 2;
+}
+.portfolio-item.wide {
+    grid-row: span 2;
+    grid-column: span 3;
+}
