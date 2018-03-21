@@ -87,11 +87,12 @@ public class UserDb  extends DatabaseConnection implements IUserDb {
             preparedStatement.setInt(3, profile.getUserId());
             preparedStatement.executeUpdate();
 
-            PreparedStatement preparedStatementTwo = connection.prepareStatement("UPDATE profile SET  highlight = ?, description = ?,birthdate = ? WHERE id = ?");
+            PreparedStatement preparedStatementTwo = connection.prepareStatement("UPDATE profile SET  highlight = ?, description = ?, imgsrc = ?, birthdate = ? WHERE id = ?");
             preparedStatementTwo.setString(1, profile.getHighlight());
             preparedStatementTwo.setString(2, profile.getDescription());
-            preparedStatementTwo.setDate(3, new java.sql.Date(profile.getBirthDate().getTime()));
-            preparedStatementTwo.setInt(4, profile.getProfileId());
+            preparedStatementTwo.setString(3, profile.getImageSrc());
+            preparedStatementTwo.setDate(4, new java.sql.Date(profile.getBirthDate().getTime()));
+            preparedStatementTwo.setInt(5, profile.getProfileId());
             
             preparedStatementTwo.executeUpdate();
 

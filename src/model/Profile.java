@@ -12,6 +12,7 @@ public class Profile extends Principal {
     private Date birthDate;
     private Date startDate;
     private Blob image;
+    private String imgsrc;
 
     public Profile(int profileId, String firstName, String lastName){
         this.profileId = profileId;
@@ -27,10 +28,13 @@ public class Profile extends Principal {
         this.image = image;
     }
 
-
     public Blob getImage(){return image;}
 
-    public void setImage(){this.image = image;}
+    public void setImage(Blob image){this.image = image;}
+
+    public String getImageSrc(){return imgsrc;}
+
+    public void setImageSrc(String imgsrc){this.imgsrc = imgsrc;}
 
     public int getProfileId() {
         return profileId;

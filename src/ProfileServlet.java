@@ -51,15 +51,13 @@ public class ProfileServlet extends HttpServlet {
                 String lastname = req.getParameter("lastname");
                 String highlight = req.getParameter("highlight");
                 String description = req.getParameter("description");
+                String imgsrc = req.getParameter("imgsrc");
 
 //                InputStream inputStream = null;
 //                Part filePart = req.getPart("image");
 //                if (filePart != null){
 //                    inputStream = filePart.getInputStream();
 //                }
-
-
-
 
                 Profile profile = new Profile(Integer.parseInt(userId),firstname, lastname);
 
@@ -73,6 +71,7 @@ public class ProfileServlet extends HttpServlet {
                 }
                 profile.setHightlight(highlight);
                 profile.setDescription(description);
+                profile.setImageSrc(imgsrc);
                 profile.setProfileId(Integer.parseInt(userId));
                 profile.setUserId(Integer.parseInt(userId));
                 this.userDal.saveProfile(profile);

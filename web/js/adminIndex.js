@@ -18,5 +18,7 @@ function AdminIndex() {
                 $(this).parent().addClass('active');
             }
         });
+
+        $(".file-input").fileinput();
     });
 }
