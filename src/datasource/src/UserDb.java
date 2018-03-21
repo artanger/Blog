@@ -5,6 +5,7 @@ import datasource.base.DatabaseConnection;
 import model.Principal;
 import model.Profile;
 
+import java.io.OutputStream;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 
@@ -38,7 +39,7 @@ public class UserDb  extends DatabaseConnection implements IUserDb {
 
     public Profile getCurrentProfile(String username, String password) {
         try {Connection connection = super.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM mypost.registration LEFT JOIN mypost.profile ON mypost.profile.id = mypost.registration.id WHERE username = ? AND password = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM mypost.registration LEFT JOIN mypost.profile ON mypost.profile.id = mypost.registration.id WHERE username = ? AND password = ? ");
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -52,7 +53,10 @@ public class UserDb  extends DatabaseConnection implements IUserDb {
                 String descriptionValue = resultSet.getString("description");
                 Date birthdateValue = resultSet.getDate("birthdate");
 
-                Profile profileRow = new Profile(profileId, firstNameValue, lastNameValue);
+
+
+
+                    Profile profileRow = new Profile(profileId, firstNameValue, lastNameValue);
                 profileRow.setUserId(profileId);
                 profileRow.setHightlight(highlightValue);
                 profileRow.setDescription(descriptionValue);

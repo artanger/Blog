@@ -5,11 +5,10 @@ import model.Profile;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -53,12 +52,22 @@ public class ProfileServlet extends HttpServlet {
                 String highlight = req.getParameter("highlight");
                 String description = req.getParameter("description");
 
+//                InputStream inputStream = null;
+//                Part filePart = req.getPart("image");
+//                if (filePart != null){
+//                    inputStream = filePart.getInputStream();
+//                }
+
+
+
+
                 Profile profile = new Profile(Integer.parseInt(userId),firstname, lastname);
 
                 try {
                     String birtDateStr = req.getParameter("birthdate");
                     Date birthdate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US).parse(birtDateStr + " 00:00:00");
                     profile.setBirthDate(birthdate);
+//                    profile.setImage();
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }

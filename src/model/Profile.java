@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Blob;
 import java.util.Date;
 
 public class Profile extends Principal {
@@ -10,6 +11,7 @@ public class Profile extends Principal {
     private String highlight;
     private Date birthDate;
     private Date startDate;
+    private Blob image;
 
     public Profile(int profileId, String firstName, String lastName){
         this.profileId = profileId;
@@ -17,14 +19,18 @@ public class Profile extends Principal {
         this.lastName = lastName;
     }
 
-    public Profile(String highlight, String description, Date birthDate, Date startDate){
+    public Profile(String highlight, String description, Date birthDate, Date startDate, Blob image){
         this.highlight = highlight;
         this.description = description;
         this.birthDate = birthDate;
         this.startDate = startDate;
+        this.image = image;
     }
 
 
+    public Blob getImage(){return image;}
+
+    public void setImage(){this.image = image;}
 
     public int getProfileId() {
         return profileId;
