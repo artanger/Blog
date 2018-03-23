@@ -48,7 +48,7 @@
             <input type="text" class="fadeIn second" name="username" id="login" >
 
             <label>Password</label>
-            <input type="text" class="fadeIn third"  name="password" id="password"   >
+            <input type="password" class="fadeIn third"  name="password" id="password"   >
 
             <input type="submit" class="fadeIn fourth" value="Submit">
         </form>

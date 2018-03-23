@@ -20,5 +20,7 @@ function AdminIndex() {
         });
 
         $(".file-input").fileinput();
+
+        $("#login").focus();
     });
 }
