@@ -6,6 +6,8 @@
     <title>Edit Post</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="css/fileinput.min.css">
+
+
 </head>
 <body>
 <jsp:include page="AdminPostHeader.jsp" />
@@ -34,8 +36,10 @@
 
                 <div class="form-group">
                     <label class="col-sm-2 col-form-label">Choose image:</label>
-                    <input class="form-control col-12 file-input"  type="file" name="imgsrc" id="imgsrc"  >
+                    <input class="form-control col-12 file-input "   type="file" name="imgsrc" id="imgsrc"  >
                 </div>
+
+
 
 
                 <div class="form-group">
@@ -51,6 +55,7 @@
         </div>
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/fileinput.min.js"></script>
 <jsp:include page="AdminFooterMce.jsp" />
 </body>
 </html>
