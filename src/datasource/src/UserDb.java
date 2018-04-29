@@ -2,12 +2,14 @@ package datasource.src;
 
 import datasource.abs.IUserDb;
 import datasource.base.DatabaseConnection;
+import model.Post;
 import model.Principal;
 import model.Profile;
 
 import java.io.OutputStream;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.util.LinkedList;
 
 public class UserDb  extends DatabaseConnection implements IUserDb {
     @Override
@@ -45,6 +47,7 @@ public class UserDb  extends DatabaseConnection implements IUserDb {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()){
+
                 String usernameValue = resultSet.getString("username");
                 int profileId = resultSet.getInt("id");
                 String firstNameValue = resultSet.getString("firstname");
@@ -53,10 +56,7 @@ public class UserDb  extends DatabaseConnection implements IUserDb {
                 String descriptionValue = resultSet.getString("description");
                 Date birthdateValue = resultSet.getDate("birthdate");
 
-
-
-
-                    Profile profileRow = new Profile(profileId, firstNameValue, lastNameValue);
+                Profile profileRow = new Profile(profileId, firstNameValue, lastNameValue);
                 profileRow.setUserId(profileId);
                 profileRow.setHightlight(highlightValue);
                 profileRow.setDescription(descriptionValue);
@@ -100,4 +100,41 @@ public class UserDb  extends DatabaseConnection implements IUserDb {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public LinkedList<Profile> getAllProfiles() {
+        LinkedList<Profile> users = new LinkedList<>();
+
+        try (Connection connection = super.getConnection();
+
+             Statement stmt = connection.createStatement()) {
+            ResultSet resultSet = stmt.executeQuery(
+                    "SELECT p.id, r.firstname, r.lastname, p.imgsrc, p.highlight\n" +
+                    "FROM registration AS r\n" +
+                    "JOIN profile AS p ON r.id = p.id\n" +
+                    "ORDER BY p.id");
+
+            while (resultSet.next()){
+                int profileId = resultSet.getInt("id");
+                String firstNameValue = resultSet.getString("firstname");
+                String lastNameValue = resultSet.getString("lastname");
+                String imgsrcValue = resultSet.getString("imgsrc");
+                String highlightValue = resultSet.getString("highlight");
+
+                Profile profileRow = new Profile(profileId, firstNameValue, lastNameValue);
+                profileRow.setImgSrc(imgsrcValue);
+                profileRow.setHightlight(highlightValue);
+
+                users.add(profileRow);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return users;
+    }
+
+
+
+
 }

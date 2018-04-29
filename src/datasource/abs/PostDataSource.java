@@ -10,6 +10,8 @@ public interface PostDataSource {
 
     LinkedList<Post> getPosts(int userId);
 
+    LinkedList<Post> getRecentPosts(int limit);
+
     void addPost (Post post);
 
     void savePost (Post post);

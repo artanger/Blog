@@ -1,4 +1,7 @@
-<%--
+<%@ page import="model.Post" %>
+<%@ page import="java.util.LinkedList" %>
+<%@ page import="model.Principal" %>
+<%@ page import="model.Profile" %><%--
   Created by IntelliJ IDEA.
   User: Arthur
   Date: 11.01.2018
@@ -9,53 +12,61 @@
 <html>
 <head>
     <title>Profile</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-    <script>tinymce.init({ selector:'textarea' });</script>
+    <%--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">--%>
+    <link rel="stylesheet" href="css/style.css">
+    <%--<script src="http://cloud.tinymce.com/stable/tinymce.min.js"></script>--%>
+    <%--<script>tinymce.init({ selector:'textarea' });</script>--%>
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row content">
-            <div class="col-sm-3">
-                <h4>John's Blog</h4>
-                <div class="card" style="width: 28rem;">
-                    <img class="card-img-top" src="http://placehold.it/445x290" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-sm-8">
-                    <h4><small>RECENT POSTS</small></h4>
-                    <hr>
-                    <h2>I Love Food</h2>
-                    <h5><span class="glyphicon glyphicon-time"></span> Post by Jane Dane, Sep 27, 2015.</h5>
-                    <h5><span class="label label-danger">Food</span> <span class="label label-primary">Ipsum</span></h5><br>
-                    <p>Food is my passion. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<% LinkedList<Post> posts = (LinkedList<Post>)request.getAttribute("post");%>
+<% LinkedList<Profile> users = (LinkedList<Profile>)request.getAttribute("profile");%>
+<div class="header">
+    <h2>Blog Name</h2>
+</div>
 
 
-                    <br><br>
 
-                    <h4><small>RECENT POSTS</small></h4>
-                    <hr>
-                    <h2>Officially Blogging</h2>
-                    <h5><span class="glyphicon glyphicon-time"></span> Post by John Doe, Sep 24, 2015.</h5>
-                    <h5><span class="label label-success">Lorem</span></h5><br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <hr>
 
-            </div>
+<div class="row">
+    <div class="leftcolumn">
+        <% for(Post p:posts){%>
+        <div class="card">
+
+            <h2> <%=p.getTitle()%></h2>
+            <h5> <%=p.getTime()%></h5>
+            <p><%=p.getShortText()%></p>
+
 
         </div>
-
+        <%}%>
     </div>
 
+
+
+    <div class="rightcolumn">
+        <div class="card">
+            <h2>About Me</h2>
+            <div class="fakeimg" style="height:100px;">Image</div>
+            <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+        </div>
+        <h3>Our Blogers</h3>
+
+        <% for(Profile p:users){%>
+            <div class="card">
+                <p><%=p.getFirstName()%></p>
+                <p><%=p.getLastName()%></p>
+                <p><%=p.getImageSrc()%></p>
+                <p><%=p.getHighlight()%></p>
+            </div>
+        <%}%>
+
+        <div class="card">
+            <h3>Follow Me</h3>
+            <p>Some text..</p>
+        </div>
+    </div>
+</div>
 
 <footer class="container-fluid">
     <p>Footer Text</p>
@@ -63,7 +74,7 @@
 
 
 
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <%--<script src="vendor/jquery/jquery.min.js"></script>--%>
+    <%--<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>--%>
 </body>
 </html>

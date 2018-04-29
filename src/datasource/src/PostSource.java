@@ -31,12 +31,27 @@ public class PostSource extends DatabaseConnection implements PostDataSource {
             stmt.setInt(1, userId);
             ResultSet resultSet = stmt.executeQuery();
             retrievePostRows(posts, resultSet);
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return posts;
+    }
+
+    @Override
+    public LinkedList<Post> getRecentPosts(int limit) {
+        LinkedList<Post> posts = new LinkedList<>();
+        try {Connection connection = super.getConnection();
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM post ORDER BY time DESC LIMIT ?");
+            stmt.setInt(1, limit);
+            ResultSet resultSet = stmt.executeQuery();
+            retrievePostRows(posts, resultSet);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return posts;
+
     }
 
     @Override

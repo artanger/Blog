@@ -56,6 +56,8 @@ public class Profile extends Principal {
     //highlight
     public void setHightlight(String highlight) { this.highlight = highlight; }
 
+    public void setImgSrc(String imgSrc) { this.imgsrc = imgSrc; }
+
     //description
     public String getDescription() {
         return description;
