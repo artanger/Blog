@@ -5,6 +5,7 @@ import model.Profile;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.InputStream;
@@ -81,4 +82,7 @@ public class ProfileServlet extends HttpServlet {
             String message = e.getMessage();
         }
     }
+
+    //@WebServlet("/GetUserServlet")
+
 }

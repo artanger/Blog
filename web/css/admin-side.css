@@ -1,0 +1,8 @@
+.file-input .file-drop-zone {
+    min-height: 100px;
+    height: auto;
+}
+
+.file-input .input-group-btn {
+    display: block;
+}

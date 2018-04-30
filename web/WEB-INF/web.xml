@@ -82,6 +82,18 @@
         <!--<welcome-file>Login.jsp</welcome-file>-->
     <!--</welcome-file-list>-->
 
+
+    <servlet>
+        <servlet-name>ImageUploadServlet</servlet-name>
+        <servlet-class>ImageUploadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ImageUploadServlet</servlet-name>
+        <url-pattern>/uploadimage</url-pattern>
+    </servlet-mapping>
+
+
     <filter>
         <filter-name>authFilter</filter-name>
         <filter-class>AuthFilter</filter-class>
@@ -93,7 +105,13 @@
     </filter-mapping>
 
 
-
+    <context-param>
+        <description>Location to store uploaded file</description>
+        <param-name>file-upload</param-name>
+        <param-value>
+            c:\temp\
+        </param-value>
+    </context-param>
 
 
 </web-app>

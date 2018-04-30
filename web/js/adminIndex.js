@@ -19,8 +19,27 @@ function AdminIndex() {
             }
         });
 
-        $(".file-input").fileinput();
+        var $fileinput = $(".file-input");
+        if ($fileinput.length > 0){
+            $fileinput.fileinput({
+                theme: 'fa',
+                uploadUrl: 'uploadimage', // you must set a valid URL here else you will get an error
+                allowedFileExtensions: ['jpg', 'png', 'gif'],
+                // overwriteInitial: false,
+                maxFileSize: 10000,
+                maxFilesNum: 1,
+                required: true,
+                allowedFileTypes: ['image']//,
+                //slugCallback: function (filename) {
+                //    return filename.replace('(', '_').replace(']', '_');
+                //}
+            });
+        }
 
-        $("#login").focus();
+        var $login = $("#login");
+        if ($login.length > 0){
+            $login.focus();
+        }
+
     });
 }
