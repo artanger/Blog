@@ -55,12 +55,14 @@ public class UserDb  extends DatabaseConnection implements IUserDb {
                 String highlightValue = resultSet.getString("highlight");
                 String descriptionValue = resultSet.getString("description");
                 Date birthdateValue = resultSet.getDate("birthdate");
+                String imgsrcValue = resultSet.getString("imgsrc");
 
                 Profile profileRow = new Profile(profileId, firstNameValue, lastNameValue);
                 profileRow.setUserId(profileId);
                 profileRow.setHightlight(highlightValue);
                 profileRow.setDescription(descriptionValue);
                 profileRow.setBirthDate(birthdateValue);
+                profileRow.setImageSrc(imgsrcValue);
 
                 String shortNameValue = resultSet.getString("firstname") + " " + resultSet.getString("lastname");
                 if (StringUtils.isNullOrWhitespace(shortNameValue)){

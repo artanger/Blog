@@ -23,7 +23,7 @@ function AdminIndex() {
         if ($fileinput.length > 0){
             $fileinput.fileinput({
                 theme: 'fa',
-                // uploadUrl: '#', // you must set a valid URL here else you will get an error
+                uploadUrl: 'uploadimage', // you must set a valid URL here else you will get an error
                 allowedFileExtensions: ['jpg', 'png', 'gif'],
                 // overwriteInitial: false,
                 maxFileSize: 10000,

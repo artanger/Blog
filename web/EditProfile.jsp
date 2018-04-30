@@ -34,10 +34,10 @@
                     <label class="col-sm-2 col-form-label">Birthdate</label>
                     <input class="form-control col-12 datepicker"  type="date" name="birthdate" id="birthdate" value="<%=profileModel.getBirthDate()%>">
                 </div>
-
+                <%=profileModel.getImageSrc()%>
                 <div class="form-group">
                     <label class="col-sm-2 col-form-label">Choose image:</label>
-                    <input class="form-control col-12 file-input "   type="file" name="imgsrc" id="imgsrc"  >
+                    <input class="form-control col-12 file-input " type="file" name="imgsrc" id="imgsrc" value="<%=profileModel.getImageSrc()%>" >
                 </div>
 
                 <div class="form-group">
