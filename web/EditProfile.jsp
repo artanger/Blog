@@ -4,11 +4,11 @@
 <html>
 <head>
     <title>Edit Post</title>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" crossorigin="anonymous">
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="css/fileinput.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" crossorigin="anonymous" />
 
-
+    <link rel="stylesheet" href="css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="css/fileinput.min.css" />
+    <link rel="stylesheet" href="css/admin-side.css" />
 </head>
 <body>
 <jsp:include page="AdminPostHeader.jsp" />
@@ -40,9 +40,6 @@
                     <input class="form-control col-12 file-input "   type="file" name="imgsrc" id="imgsrc"  >
                 </div>
 
-
-
-
                 <div class="form-group">
                     <label class="col-sm-2 col-form-label">Description</label>
                     <textarea rows="4" name="description" id="description" class="form-control col-12"><%=profileModel.getDescription()%></textarea>
@@ -56,7 +53,7 @@
         </div>
     </div>
 </div>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/fileinput.min.js"></script>
+
 <jsp:include page="AdminFooterMce.jsp" />
 </body>
 </html>
