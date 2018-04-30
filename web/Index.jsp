@@ -1,6 +1,5 @@
 <%@ page import="model.Post" %>
 <%@ page import="java.util.LinkedList" %>
-<%@ page import="model.Principal" %>
 <%@ page import="model.Profile" %><%--
   Created by IntelliJ IDEA.
   User: Arthur
@@ -32,12 +31,9 @@
     <div class="leftcolumn">
         <% for(Post p:posts){%>
         <div class="card">
-
             <h2> <%=p.getTitle()%></h2>
             <h5> <%=p.getTime()%></h5>
             <p><%=p.getShortText()%></p>
-
-
         </div>
         <%}%>
     </div>

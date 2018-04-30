@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Posts</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" crossorigin="anonymous">
 </head>
 <body>
 <% LinkedList<Post> posts = (LinkedList<Post>)request.getAttribute("post");%>
