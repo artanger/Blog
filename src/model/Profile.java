@@ -36,9 +36,7 @@ public class Profile extends Principal {
 
     public void setImageSrc(String imgsrc){this.imgsrc = imgsrc;}
 
-    public int getProfileId() {
-        return profileId;
-    }
+    public int getProfileId() { return profileId; }
 
     public String getHighlight() { return highlight; }
     //firstName

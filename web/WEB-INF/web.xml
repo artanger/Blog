@@ -109,7 +109,7 @@
         <description>Location to store uploaded file</description>
         <param-name>file-upload</param-name>
         <param-value>
-            c:\temp\
+            d:\Projects\For Arthur\Blog\out\artifacts\web_war_exploded\img\
         </param-value>
     </context-param>
 
