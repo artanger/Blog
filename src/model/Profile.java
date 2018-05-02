@@ -1,5 +1,7 @@
 package model;
 
+import datasource.src.StringUtils;
+
 import java.sql.Blob;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -34,7 +36,7 @@ public class Profile extends Principal {
 
     public void setImage(Blob image){this.image = image;}
 
-    public String getImageSrc(){return imgsrc;}
+    public String getImageSrc() { return imgsrc; }
 
     public void setImageSrc(String imgsrc){this.imgsrc = imgsrc;}
 

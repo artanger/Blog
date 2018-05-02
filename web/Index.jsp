@@ -1,6 +1,7 @@
 <%@ page import="model.Post" %>
 <%@ page import="java.util.LinkedList" %>
-<%@ page import="model.Profile" %><%--
+<%@ page import="model.Profile" %>
+<%@ page import="datasource.src.StringUtils" %><%--
   Created by IntelliJ IDEA.
   User: Arthur
   Date: 11.01.2018
@@ -20,51 +21,51 @@
 
 <% LinkedList<Post> posts = (LinkedList<Post>)request.getAttribute("post");%>
 <% LinkedList<Profile> users = (LinkedList<Profile>)request.getAttribute("profile");%>
-<div class="header">
-    <h2>Blog Name</h2>
-</div>
-
-
-
-
 <div class="row">
-    <div class="leftcolumn">
-        <% for(Post p:posts){%>
+    <div class="column" style="background-color:#aaa;">
+
         <div class="card">
-            <h2> <%=p.getTitle()%></h2>
-            <h5> <%=p.getTime()%></h5>
-            <p><%=p.getShortText()%></p>
+            <h3>Popular Post</h3>
+            <% for(Post p:posts){%>
+                <div class="fakeimg"><p><%=p.getTitle()%></p></div>
+                <div class="fakeimg"><p><%=p.getShortText()%></p></div>
+
+            <%}%>
         </div>
-        <%}%>
+        <div class="blockposts">
+            <h1>Recent Post</h1>
+            <% for(Post p:posts){%>
+            <div id="cardwrap">
+                <h2><span><%=p.getTitle()%></span></h2>
+                <p><span><%=p.getTime()%></span></p>
+                <p><span><%=p.getShortText()%></span></p>
+            </div>
+            <%}%>
+
+        </div>
+
     </div>
 
+    <div class="column" style="background-color:#bbb;">
 
-
-    <div class="rightcolumn">
-        <div class="card">
-            <h2>About Me</h2>
-            <div class="fakeimg" style="height:100px;">Image</div>
-            <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-        </div>
         <h3>Our Blogers</h3>
 
-        <% for(Profile p:users){%>
-            <div class="card">
-                <p><a href="/bloger?id=<%=p.getProfileId()%>"><%=p.getFirstName()%> <%=p.getLastName()%></a></p>
-                <p><%=p.getBirthDateFormatted()%></p>
-            </div>
-        <%}%>
+        <% for(Profile p:users){
+            String imgsrc = !StringUtils.isNullOrWhitespace(p.getImageSrc())?"img/"+p.getImageSrc(): "//via.placeholder.com/50x50";%>
+        <div id="cardwrap">
+            <img src="<%=imgsrc%>" style="width: 90px" />
 
-        <div class="card">
-            <h3>Follow Me</h3>
-            <p>Some text..</p>
+            <a href="/bloger?id=<%=p.getProfileId()%>">
+                <p><span><%=p.getFirstName()%> <%=p.getLastName()%></span></p>
+                <p><%=p.getBirthDateFormatted()%></p>
+
+            </a>
+
         </div>
+        <%}%>
     </div>
 </div>
 
-<footer class="container-fluid">
-    <p>Footer Text</p>
-</footer>
 
 
 

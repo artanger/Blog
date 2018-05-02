@@ -119,7 +119,9 @@
         <description>Location to store uploaded file</description>
         <param-name>file-upload</param-name>
         <param-value>
-            d:\Projects\For Arthur\Blog\out\artifacts\web_war_exploded\img\
+            <!--d:\Projects\For Arthur\Blog\out\artifacts\web_war_exploded\img\-->
+
+            e:\MyLearning\JavaProject\TestServlet\out\artifacts\web_war_exploded\img\
         </param-value>
     </context-param>
 
