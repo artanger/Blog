@@ -50,10 +50,8 @@
 
         <% for(Profile p:users){%>
             <div class="card">
-                <p><%=p.getFirstName()%></p>
-                <p><%=p.getLastName()%></p>
-                <p><%=p.getImageSrc()%></p>
-                <p><%=p.getHighlight()%></p>
+                <p><a href="/bloger?id=<%=p.getProfileId()%>"><%=p.getFirstName()%> <%=p.getLastName()%></a></p>
+                <p><%=p.getBirthDateFormatted()%></p>
             </div>
         <%}%>
 

@@ -83,7 +83,6 @@ public class PostSource extends DatabaseConnection implements PostDataSource {
         }
 
         return new Post(-1, null, null);
-
     }
 
     @Override

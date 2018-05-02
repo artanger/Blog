@@ -93,6 +93,16 @@
         <url-pattern>/uploadimage</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>BlogerServlet</servlet-name>
+        <servlet-class>BlogerServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>BlogerServlet</servlet-name>
+        <url-pattern>/bloger</url-pattern>
+    </servlet-mapping>
+
 
     <filter>
         <filter-name>authFilter</filter-name>

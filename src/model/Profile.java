@@ -1,6 +1,8 @@
 package model;
 
 import java.sql.Blob;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Profile extends Principal {
@@ -45,8 +47,14 @@ public class Profile extends Principal {
     public String getFirstName() { return firstName; }
     //lastName
     public String getLastName() { return lastName; }
+
     //birthDate
     public Date getBirthDate() { return birthDate; }
+
+    public String getBirthDateFormatted() {
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        return df.format(birthDate);
+    }
 
     public void setBirthDate(Date birthDate) { this.birthDate = birthDate;}
     //startDate

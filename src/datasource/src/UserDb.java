@@ -46,32 +46,7 @@ public class UserDb  extends DatabaseConnection implements IUserDb {
             preparedStatement.setString(2, password);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            while (resultSet.next()){
-
-                String usernameValue = resultSet.getString("username");
-                int profileId = resultSet.getInt("id");
-                String firstNameValue = resultSet.getString("firstname");
-                String lastNameValue = resultSet.getString("lastname");
-                String highlightValue = resultSet.getString("highlight");
-                String descriptionValue = resultSet.getString("description");
-                Date birthdateValue = resultSet.getDate("birthdate");
-                String imgsrcValue = resultSet.getString("imgsrc");
-
-                Profile profileRow = new Profile(profileId, firstNameValue, lastNameValue);
-                profileRow.setUserId(profileId);
-                profileRow.setHightlight(highlightValue);
-                profileRow.setDescription(descriptionValue);
-                profileRow.setBirthDate(birthdateValue);
-                profileRow.setImageSrc(imgsrcValue);
-
-                String shortNameValue = resultSet.getString("firstname") + " " + resultSet.getString("lastname");
-                if (StringUtils.isNullOrWhitespace(shortNameValue)){
-                    shortNameValue = usernameValue;
-                }
-                profileRow.setShortName(shortNameValue);
-
-                return profileRow;
-            }
+            return retrieveProfileRow(resultSet);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -108,10 +83,9 @@ public class UserDb  extends DatabaseConnection implements IUserDb {
         LinkedList<Profile> users = new LinkedList<>();
 
         try (Connection connection = super.getConnection();
-
              Statement stmt = connection.createStatement()) {
-            ResultSet resultSet = stmt.executeQuery(
-                    "SELECT p.id, r.firstname, r.lastname, p.imgsrc, p.highlight\n" +
+             ResultSet resultSet = stmt.executeQuery(
+                    "SELECT p.id, r.firstname, r.lastname, p.imgsrc, p.highlight, p.birthdate\n" +
                     "FROM registration AS r\n" +
                     "JOIN profile AS p ON r.id = p.id\n" +
                     "ORDER BY p.id");
@@ -122,10 +96,12 @@ public class UserDb  extends DatabaseConnection implements IUserDb {
                 String lastNameValue = resultSet.getString("lastname");
                 String imgsrcValue = resultSet.getString("imgsrc");
                 String highlightValue = resultSet.getString("highlight");
+                Date birthdateValue = resultSet.getDate("birthdate");
 
                 Profile profileRow = new Profile(profileId, firstNameValue, lastNameValue);
                 profileRow.setImgSrc(imgsrcValue);
                 profileRow.setHightlight(highlightValue);
+                profileRow.setBirthDate(birthdateValue);
 
                 users.add(profileRow);
             }
@@ -136,7 +112,54 @@ public class UserDb  extends DatabaseConnection implements IUserDb {
         return users;
     }
 
+    @Override
+    public Profile getBlogger(String bloggerId) {
+        try {Connection connection = super.getConnection();
+
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "SELECT r.id, r.username, r.firstname, r.lastname, p.highlight, p.description, p.birthdate, p.imgsrc\n" +
+                    "FROM registration AS r \n" +
+                    "JOIN profile AS p ON r.id = p.id \n" +
+                    "WHERE p.id = ?");
+            preparedStatement.setString(1, bloggerId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            return retrieveProfileRow(resultSet);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 
+    private Profile retrieveProfileRow(ResultSet resultSet) throws SQLException {
+        while (resultSet.next()){
+
+            String usernameValue = resultSet.getString("username");
+            int profileId = resultSet.getInt("id");
+            String firstNameValue = resultSet.getString("firstname");
+            String lastNameValue = resultSet.getString("lastname");
+            String highlightValue = resultSet.getString("highlight");
+            String descriptionValue = resultSet.getString("description");
+            Date birthdateValue = resultSet.getDate("birthdate");
+            String imgsrcValue = resultSet.getString("imgsrc");
+
+            Profile profileRow = new Profile(profileId, firstNameValue, lastNameValue);
+            profileRow.setUserId(profileId);
+            profileRow.setHightlight(highlightValue);
+            profileRow.setDescription(descriptionValue);
+            profileRow.setBirthDate(birthdateValue);
+            profileRow.setImageSrc(imgsrcValue);
+
+            String shortNameValue = resultSet.getString("firstname") + " " + resultSet.getString("lastname");
+            if (StringUtils.isNullOrWhitespace(shortNameValue)){
+                shortNameValue = usernameValue;
+            }
+            profileRow.setShortName(shortNameValue);
+
+            return profileRow;
+        }
+        return null;
+    }
 
 }
