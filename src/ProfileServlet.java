@@ -4,6 +4,7 @@ import model.Principal;
 import model.Profile;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -31,6 +32,10 @@ public class ProfileServlet extends HttpServlet {
             Principal principal = (Principal) session.getAttribute("PRINCIPAL");
             String username = principal.getUsername();
             String password = principal.getPassword();
+
+            ServletContext context = this.getServletContext();
+            String filePath = context.getInitParameter("file-upload");
+            req.setAttribute("ImagesPath", filePath);
 
             Profile profileModel = this.userDal.getCurrentProfile(username, password);
             req.setAttribute("ProfileModel", profileModel);

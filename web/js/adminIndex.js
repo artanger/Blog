@@ -29,10 +29,18 @@ function AdminIndex() {
                 maxFileSize: 10000,
                 maxFilesNum: 1,
                 required: true,
-                allowedFileTypes: ['image']//,
-                //slugCallback: function (filename) {
-                //    return filename.replace('(', '_').replace(']', '_');
-                //}
+                allowedFileTypes: ['image'],
+                //initialPreview: [
+                   // "http://localhost:8080/img/image%20_18_.jpg"
+                   // '<img src="img/image%20_18_.jpg" class="file-preview-image" alt="Desert" title="Desert">'
+                //]
+            });
+
+            $fileinput.on('fileuploaded', function(event, data, previewId, index) {
+                var $fieldElem = $('#' + $(event.currentTarget).data('id'));
+                if($fieldElem.length > 0){
+                    $fieldElem.val(data.filenames[0]);
+                }
             });
         }
 
