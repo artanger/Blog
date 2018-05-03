@@ -103,6 +103,15 @@
         <url-pattern>/bloger</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>CategoryServlet</servlet-name>
+        <servlet-class>CategoryServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CategoryServlet</servlet-name>
+        <url-pattern>/categories</url-pattern>
+    </servlet-mapping>
 
     <filter>
         <filter-name>authFilter</filter-name>
@@ -112,6 +121,7 @@
         <filter-name>authFilter</filter-name>
         <url-pattern>/posts</url-pattern>
         <url-pattern>/currentprofile</url-pattern>
+        <url-pattern>/categories</url-pattern>
     </filter-mapping>
 
 

@@ -1,5 +1,8 @@
+import datasource.abs.ICategoryDb;
 import datasource.abs.PostDataSource;
+import datasource.src.CategoryDb;
 import datasource.src.PostSource;
+import model.Category;
 import model.Post;
 import model.Principal;
 
@@ -15,9 +18,10 @@ import java.util.LinkedList;
 
 public class PostServlet extends HttpServlet {
     private PostDataSource postSource;
-
+    private ICategoryDb categoryDal;
     public PostServlet(){
-        postSource = new PostSource();
+        this.postSource = new PostSource();
+        this.categoryDal = new CategoryDb();
     }
 
     @Override
@@ -28,10 +32,10 @@ public class PostServlet extends HttpServlet {
                 Principal principal = (Principal) session.getAttribute("PRINCIPAL");
                 req.setAttribute("shortname", principal.getShortName());
                 Integer userId = principal.getUserId();
-
+                LinkedList<Category> categories = this.categoryDal.getCategories();
                 String action = req.getParameter("action");
-
                 if ("addpost".equalsIgnoreCase(action)) {
+                    req.setAttribute("categories", categories);
                     RequestDispatcher dispatcher = req.getRequestDispatcher("AddPost.jsp");
                     dispatcher.forward(req, resp);
                     return;
@@ -40,6 +44,7 @@ public class PostServlet extends HttpServlet {
                     String postId = req.getParameter("postid");
                     Post post = postSource.getPost(postId);
                     req.setAttribute("post", post);
+                    req.setAttribute("categories", categories);
                     RequestDispatcher dispatcher = req.getRequestDispatcher("EditPost.jsp");
                     dispatcher.forward(req, resp);
                     return;
@@ -72,10 +77,14 @@ public class PostServlet extends HttpServlet {
             if ("newpost".equalsIgnoreCase(action)) {
                 String title = req.getParameter("title");
                 String text = req.getParameter("text");
+                String categoryId = req.getParameter("categoryId");
                 if (title != null) {
                     Post addedPost = new Post(-1, title, text);
                     addedPost.setUserId(1);   // temporary userId = 1
+
                     addedPost.setTime(LocalDateTime.now());
+                    addedPost.setCategoryId(categoryId);
+
                     postSource.addPost(addedPost);
                 }
             } else if ("deletepost".equalsIgnoreCase(action)) {
