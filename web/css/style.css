@@ -25,7 +25,7 @@ body{
 .card {
     width: 550px;
     height: 100px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .container{
@@ -33,11 +33,24 @@ body{
     background: #3690F0;
     margin: 30px auto;
     padding: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.containerpost{
+    width: 600px;
+    background: #3690F0;
+    margin: 30px auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+
+}
+
 
 .content{
     text-align: center;
+}
+.contentpost{
+    text-align: justify;
 }
 
 .card{
@@ -47,6 +60,17 @@ body{
     background-image: linear-gradient(-25deg, #1e69de 0%,#1e69de 50.9%,#3690f0 51%,#1e69de 100%);
     margin-bottom: 5px;
     display: inline-block;
+}
+
+.cardpost{
+    background-image: linear-gradient(-25deg, #1e69de 0%,#1e69de 50.9%,#3690f0 51%,#1e69de 100%);
+    display: inline-block;
+    width: 550px;
+    height: 150px;
+    padding: 20px;
+    margin-bottom: 20px;
+
+
 }
 
 .card img{
@@ -68,54 +92,33 @@ body{
     width: 150px;
 
 }
+.txtpost{
+    display: block;
+    vertical-align: middle;
+    color: #fff;
+    width:500px;
+    padding-left: 3%;
 
-
-
-
-
-
-/*#cardwrap{*/
-    /*border: 2px solid transparent;*/
-    /*background-color: #eee;*/
-    /*border-radius: 5px;*/
-    /*padding: 10px;*/
-    /*margin: 5px 0;*/
-    /*width: 500px;*/
-/*}*/
-
-/*#cardwrap::after{*/
-    /*content: "";*/
-    /*clear: both;*/
-    /*display: table;*/
-/*}*/
-
-/*#cardwrap img{*/
-    /*float: left;*/
-    /*margin-right: 20px;*/
-    /*border-radius: 10px;*/
-/*}*/
-
-/*#cardwrap span{*/
-    /*font-size: 15px;*/
-
-/*}*/
-
+}
 ul li{
-    list-style-type: none;
-    margin-bottom: -5px;
+    display: inline-block;
+    color: #fff;
 }
 
-a{
-    text-decoration: none;
-    color: #1c94c4;
+ul#postinfo  {
+    display: block;
+    padding: 12px 0;
+    margin: 0 0 29px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.333;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    overflow: hidden;
+    max-width: 100%;
 }
 
 
 
 
-.blockposts{
-    height: 300px;
-    width: 350px;
-    background: #fff;
-    border-radius: 5px;
-}
+
