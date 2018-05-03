@@ -25,24 +25,20 @@
     <div class="column" style="background-color:#aaa;">
 
         <div class="card">
-            <h3>Popular Post</h3>
+            <h1 id="bordertxt">Posts</h1>
             <% for(Post p:posts){%>
-                <div class="fakeimg"><p><%=p.getTitle()%></p></div>
-                <div class="fakeimg"><p><%=p.getShortText()%></p></div>
+            <ul id="cardwrap">
+                <li><h3><%=p.getTitle()%></h3></li>
+                <li><p><%=p.getShortText()%></p></li>
+                <li><%=p.getTime()%></li>
 
+            </ul>
             <%}%>
         </div>
-        <div class="blockposts">
-            <h1>Recent Post</h1>
-            <% for(Post p:posts){%>
-            <div id="cardwrap">
-                <h2><span><%=p.getTitle()%></span></h2>
-                <p><span><%=p.getTime()%></span></p>
-                <p><span><%=p.getShortText()%></span></p>
-            </div>
-            <%}%>
 
-        </div>
+
+
+
 
     </div>
 
@@ -53,11 +49,10 @@
         <% for(Profile p:users){
             String imgsrc = !StringUtils.isNullOrWhitespace(p.getImageSrc())?"img/"+p.getImageSrc(): "//via.placeholder.com/50x50";%>
         <div id="cardwrap">
-            <img src="<%=imgsrc%>" style="width: 90px" />
-
             <a href="/bloger?id=<%=p.getProfileId()%>">
-                <p><span><%=p.getFirstName()%> <%=p.getLastName()%></span></p>
-                <p><%=p.getBirthDateFormatted()%></p>
+                <img src="<%=imgsrc%>" style="width: 100px" />
+                <h3><span><%=p.getFirstName()%> <%=p.getLastName()%></span></h3>
+                <p><%=p.getHighlight()%></p>
 
             </a>
 

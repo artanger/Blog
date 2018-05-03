@@ -17,7 +17,7 @@ public class IndexServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-            LinkedList<Post> posts = postSource.getRecentPosts(10);
+            LinkedList<Post> posts = postSource.getRecentPosts(5);
             req.setAttribute("post", posts);
 
             LinkedList<Profile> users = userdb.getAllProfiles();
