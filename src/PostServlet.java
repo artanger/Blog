@@ -1,5 +1,8 @@
+import datasource.abs.ICategoryDb;
 import datasource.abs.PostDataSource;
+import datasource.src.CategoryDb;
 import datasource.src.PostSource;
+import model.Category;
 import model.Post;
 import model.Principal;
 
@@ -15,9 +18,10 @@ import java.util.LinkedList;
 
 public class PostServlet extends HttpServlet {
     private PostDataSource postSource;
-
+    private ICategoryDb categoryDal;
     public PostServlet(){
-        postSource = new PostSource();
+        this.postSource = new PostSource();
+        this.categoryDal = new CategoryDb();
     }
 
     @Override
@@ -28,10 +32,10 @@ public class PostServlet extends HttpServlet {
                 Principal principal = (Principal) session.getAttribute("PRINCIPAL");
                 req.setAttribute("shortname", principal.getShortName());
                 Integer userId = principal.getUserId();
-
+                LinkedList<Category> categories = this.categoryDal.getCategories();
                 String action = req.getParameter("action");
-
                 if ("addpost".equalsIgnoreCase(action)) {
+                    req.setAttribute("categories", categories);
                     RequestDispatcher dispatcher = req.getRequestDispatcher("AddPost.jsp");
                     dispatcher.forward(req, resp);
                     return;
@@ -40,6 +44,7 @@ public class PostServlet extends HttpServlet {
                     String postId = req.getParameter("postid");
                     Post post = postSource.getPost(postId);
                     req.setAttribute("post", post);
+                    req.setAttribute("categories", categories);
                     RequestDispatcher dispatcher = req.getRequestDispatcher("EditPost.jsp");
                     dispatcher.forward(req, resp);
                     return;
@@ -67,29 +72,40 @@ public class PostServlet extends HttpServlet {
     @Override
     protected void doPost (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            String action = req.getParameter("action");
+            HttpSession  session = req.getSession();
+            if (session != null) {
+                String action = req.getParameter("action");
+                Principal principal = (Principal) session.getAttribute("PRINCIPAL");
+                Integer userId = principal.getUserId();
+                if ("newpost".equalsIgnoreCase(action)) {
+                    String title = req.getParameter("title");
+                    String text = req.getParameter("text");
+                    String categoryId = req.getParameter("categoryId");
+                    String introduction = req.getParameter("introduction");
+                    if (title != null) {
+                        Post addedPost = new Post(-1, title, text);
+                        addedPost.setUserId(userId);
+                        addedPost.setTime(LocalDateTime.now());
+                        addedPost.setCategoryId(categoryId);
+                        addedPost.setIntroduction(introduction);
+                        postSource.addPost(addedPost);
+                    }
+                } else if ("deletepost".equalsIgnoreCase(action)) {
+                    String postId = req.getParameter("postid");
+                    postSource.deletePost(postId);
 
-            if ("newpost".equalsIgnoreCase(action)) {
-                String title = req.getParameter("title");
-                String text = req.getParameter("text");
-                if (title != null) {
-                    Post addedPost = new Post(-1, title, text);
-                    addedPost.setUserId(1);   // temporary userId = 1
-                    addedPost.setTime(LocalDateTime.now());
-                    postSource.addPost(addedPost);
+                } else if ("savepost".equalsIgnoreCase(action)) {
+                    String postId = req.getParameter("postid");
+                    String title = req.getParameter("title");
+                    String text = req.getParameter("text");
+                    String categoryId = req.getParameter("categoryId");
+                    String introduction = req.getParameter("introduction");
+                    Post savedPost = new Post(Integer.parseInt(postId), title, text);
+                    savedPost.setCategoryId(categoryId);
+                    savedPost.setIntroduction(introduction);
+                    postSource.savePost(savedPost);
                 }
-            } else if ("deletepost".equalsIgnoreCase(action)) {
-                String postId = req.getParameter("postid");
-                postSource.deletePost(postId);
-
-            } else if ("savepost".equalsIgnoreCase(action)) {
-                String postId = req.getParameter("postid");
-                String title = req.getParameter("title");
-                String text = req.getParameter("text");
-                postSource.savePost(new Post(Integer.parseInt(postId), title, text));
-
             }
-
             doGet(req, resp);
         } catch (Exception e) {
             String message = e.getMessage();

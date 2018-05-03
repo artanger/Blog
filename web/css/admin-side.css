@@ -11,3 +11,10 @@
     min-height: 100px;
     height: auto;
 }*/
+
+.btn:hover, .btn:focus, .btn {
+    cursor: pointer;
+}
+table.table-hover .btn {
+    display: block;
+}

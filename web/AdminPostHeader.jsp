@@ -10,6 +10,16 @@
             <li class="nav-item"><a href="${pageContext.request.contextPath}/posts" class="nav-link">Admin Home</a></li>
             <li class="nav-item"><a class="nav-link" href="#">About</a></li>
             <li class="nav-item"><a href="${pageContext.request.contextPath}/posts?action=addpost" class="nav-link">Add Post</a></li>
+            <li class="nav-item"><a href="${pageContext.request.contextPath}/categories" class="nav-link">Categories</a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkCategories" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Categories
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkCategories">
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/categories" >Categories List</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/categories?action=addcategory">Add Category</a>
+                </div>
+            </li>
         </ul>
         <form class="form-inline">
             <input class="form-control mr-sm-2" type="text" placeholder="Search">
