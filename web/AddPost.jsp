@@ -26,6 +26,11 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    <label class="col-sm-2 col-form-label">Introduction</label>
+                    <input class="form-control col-12"  type="text" name="introduction" id="introduction">
+                    </br>
+                </div>
+                <div class="form-group">
                     <label  class="col-sm-2 col-form-label">Text</label>
                     <textarea rows="4" name="text" id="text" class="form-control col-12"></textarea>
                 </div>

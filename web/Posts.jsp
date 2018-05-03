@@ -4,7 +4,9 @@
 <html>
 <head>
     <title>Posts</title>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="css/admin-side.css">
 </head>
 <body>
 <% LinkedList<Post> posts = (LinkedList<Post>)request.getAttribute("post");%>
@@ -14,9 +16,9 @@
     <tr>
         <th scope="col">#</th>
         <th scope="col">Title</th>
-        <th scope="col">Text</th>
         <th scope="col">Date</th>
-        <th scope="col">UserId</th>
+        <th scope="col">Category</th>
+        <th scope="col">User</th>
         <th scope="col">Edit</th>
         <th scope="col">Delete</th>
     </tr>
@@ -26,13 +28,13 @@
     <tr >
         <td><%=p.getId()%></td>
         <td><%=p.getTitle()%></td>
-        <td><%=p.getShortText()%></td>
         <td><%=p.getTime()%></td>
-        <td><%=p.getUserId()%></td>
-        <td><a href="?action=editpost&postid=<%=p.getId()%>"  class="btn btn-link">Edit</a></td>
+        <td><%=p.getCategoryName()%></td>
+        <td><%=p.getUserShortName()%></td>
+        <td><a href="?action=editpost&postid=<%=p.getId()%>" class="btn btn-link" title="Edit Post"><i class="fas fa-edit"></i></a></td>
         <td>
             <form method="post">
-                <input type="submit"  class="btn btn-link" value=" X ">
+                <button type="submit" class="btn btn-link" title="Delete Post"><i class="fas fa-trash-alt"></i></button>
                 <input type="hidden" name="action" value="deletepost" />
                 <input type="hidden" name="postid" value="<%=p.getId()%>" />
             </form>

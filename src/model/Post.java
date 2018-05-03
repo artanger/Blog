@@ -14,6 +14,7 @@ public class Post {
     private String categoryName = "";
     private String userFirstName = "";
     private String userLastName = "";
+    private String introduction;
 
     public Post(int id, String title, String text) {
         this.id = id;
@@ -79,4 +80,7 @@ public class Post {
     public void setUserLastName(String userLastName) { this.userLastName = userLastName; }
 
     public String getUserShortName() { return String.format("%s %s", this.userFirstName, this.userLastName); }
+
+    public String getIntroduction() { return this.introduction; }
+    public void setIntroduction(String introduction) { this.introduction = introduction; }
 }

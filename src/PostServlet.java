@@ -72,33 +72,40 @@ public class PostServlet extends HttpServlet {
     @Override
     protected void doPost (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            String action = req.getParameter("action");
+            HttpSession  session = req.getSession();
+            if (session != null) {
+                String action = req.getParameter("action");
+                Principal principal = (Principal) session.getAttribute("PRINCIPAL");
+                Integer userId = principal.getUserId();
+                if ("newpost".equalsIgnoreCase(action)) {
+                    String title = req.getParameter("title");
+                    String text = req.getParameter("text");
+                    String categoryId = req.getParameter("categoryId");
+                    String introduction = req.getParameter("introduction");
+                    if (title != null) {
+                        Post addedPost = new Post(-1, title, text);
+                        addedPost.setUserId(userId);
+                        addedPost.setTime(LocalDateTime.now());
+                        addedPost.setCategoryId(categoryId);
+                        addedPost.setIntroduction(introduction);
+                        postSource.addPost(addedPost);
+                    }
+                } else if ("deletepost".equalsIgnoreCase(action)) {
+                    String postId = req.getParameter("postid");
+                    postSource.deletePost(postId);
 
-            if ("newpost".equalsIgnoreCase(action)) {
-                String title = req.getParameter("title");
-                String text = req.getParameter("text");
-                String categoryId = req.getParameter("categoryId");
-                if (title != null) {
-                    Post addedPost = new Post(-1, title, text);
-                    addedPost.setUserId(1);   // temporary userId = 1
-
-                    addedPost.setTime(LocalDateTime.now());
-                    addedPost.setCategoryId(categoryId);
-
-                    postSource.addPost(addedPost);
+                } else if ("savepost".equalsIgnoreCase(action)) {
+                    String postId = req.getParameter("postid");
+                    String title = req.getParameter("title");
+                    String text = req.getParameter("text");
+                    String categoryId = req.getParameter("categoryId");
+                    String introduction = req.getParameter("introduction");
+                    Post savedPost = new Post(Integer.parseInt(postId), title, text);
+                    savedPost.setCategoryId(categoryId);
+                    savedPost.setIntroduction(introduction);
+                    postSource.savePost(savedPost);
                 }
-            } else if ("deletepost".equalsIgnoreCase(action)) {
-                String postId = req.getParameter("postid");
-                postSource.deletePost(postId);
-
-            } else if ("savepost".equalsIgnoreCase(action)) {
-                String postId = req.getParameter("postid");
-                String title = req.getParameter("title");
-                String text = req.getParameter("text");
-                postSource.savePost(new Post(Integer.parseInt(postId), title, text));
-
             }
-
             doGet(req, resp);
         } catch (Exception e) {
             String message = e.getMessage();
