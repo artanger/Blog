@@ -113,6 +113,17 @@
         <url-pattern>/categories</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>OurBloggersServlet</servlet-name>
+        <servlet-class>OurBloggersServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>OurBloggersServlet</servlet-name>
+        <url-pattern>/ourbloggers</url-pattern>
+    </servlet-mapping>
+
+
     <filter>
         <filter-name>authFilter</filter-name>
         <filter-class>AuthFilter</filter-class>

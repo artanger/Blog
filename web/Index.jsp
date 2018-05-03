@@ -2,12 +2,6 @@
 <%@ page import="java.util.LinkedList" %>
 <%@ page import="model.Profile" %>
 <%@ page import="datasource.src.StringUtils" %><%--
-  Created by IntelliJ IDEA.
-  User: Arthur
-  Date: 11.01.2018
-  Time: 11:06
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -21,45 +15,57 @@
 
 <% LinkedList<Post> posts = (LinkedList<Post>)request.getAttribute("post");%>
 <% LinkedList<Profile> users = (LinkedList<Profile>)request.getAttribute("profile");%>
-<div class="row">
-    <div class="column" style="background-color:#aaa;">
 
-        <div class="card">
-            <h1 id="bordertxt">Posts</h1>
-            <% for(Post p:posts){%>
-            <ul id="cardwrap">
-                <li><h3><%=p.getTitle()%></h3></li>
-                <li><p><%=p.getShortText()%></p></li>
-                <li><%=p.getTime()%></li>
+<div class="bghead">
+    <h1 id="namepage">Our Bloggers</h1>
 
-            </ul>
-            <%}%>
+
+
+        <%--<h1 id="bordertxt">Posts</h1>--%>
+        <%--<% for(Post p:posts){%>--%>
+        <%--<ul id="cardwrap">--%>
+            <%--<li><h3><%=p.getTitle()%></h3></li>--%>
+            <%--<li><p><%=p.getShortText()%></p></li>--%>
+            <%--<li><%=p.getTime()%></li>--%>
+
+        <%--</ul>--%>
+        <%--<%}%>--%>
+         <div class="container">
+             <div class="content">
+                 <% for(Profile p:users){
+                     String imgsrc = !StringUtils.isNullOrWhitespace(p.getImageSrc())?"img/"+p.getImageSrc(): "//via.placeholder.com/50x50";%>
+                 <a href="/bloger?id=<%=p.getProfileId()%>">
+                     <div class="card">
+                         <img src="<%=imgsrc%>" alt="">
+                         <div class="txt"><%=p.getFirstName()%> <%=p.getLastName()%>
+                             <p ><%=p.getHighlight()%></p>
+                         </div>
+                     </div>
+                 </a>
+                 <%}%>
+             </div>
         </div>
 
 
 
+        <%--<div id="cardwrap">--%>
+
+                <%--<img src="" style="width: 100px" />--%>
+                <%--<h3><span></span></h3>--%>
 
 
-    </div>
+            <%--</a>--%>
 
-    <div class="column" style="background-color:#bbb;">
+        <%--</div>--%>
 
-        <h3>Our Blogers</h3>
 
-        <% for(Profile p:users){
-            String imgsrc = !StringUtils.isNullOrWhitespace(p.getImageSrc())?"img/"+p.getImageSrc(): "//via.placeholder.com/50x50";%>
-        <div id="cardwrap">
-            <a href="/bloger?id=<%=p.getProfileId()%>">
-                <img src="<%=imgsrc%>" style="width: 100px" />
-                <h3><span><%=p.getFirstName()%> <%=p.getLastName()%></span></h3>
-                <p><%=p.getHighlight()%></p>
 
-            </a>
 
-        </div>
-        <%}%>
-    </div>
+
+
 </div>
+
+
 
 
 
