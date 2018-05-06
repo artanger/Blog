@@ -66,13 +66,7 @@ body {
     /*!*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*!*/
 /*}*/
 
-.content{
-    text-align: center;
-    margin: 30px auto;
-}
-.contentpost{
-    text-align: justify;
-}
+
 
 .card{
     width: 420px;
@@ -160,12 +154,43 @@ a{
 
 
 
-.column.side h4 {
+.side h4 {
     color: #b94a48;
+    margin: 0 5px;
 }
 
-.column.side .badge-secondary {
+.side .badge-secondary {
     color: #fff;
     background-color: #b94a48;
 }
 
+.bloggers img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    float: left;
+    margin: 0 15px 0 0;
+}
+
+.bloggers img:hover{
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+.bloggers li.list-group-item {
+    /* margin: 0;*/
+    padding: 0;
+}
+.bloggers li.list-group-item a {
+    display: inline-block;
+    padding: 15px;
+}
+.bloggers li.list-group-item a:hover {
+    text-decoration: none;
+}
+
+.borderless {
+    border: none;
+}
+.bloggers a.list-group-item:last-child {
+   /* margin-bottom: -1px;*/
+}
