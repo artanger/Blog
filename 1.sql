@@ -41,6 +41,33 @@ INSERT INTO `categories` VALUES (1,'Other','Any information that doesn\'t siut t
 UNLOCK TABLES;
 
 --
+-- Table structure for table `comment`
+--
+
+DROP TABLE IF EXISTS `comment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `comment` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `postId` int(10) NOT NULL,
+  `author` varchar(250) NOT NULL,
+  `text` varchar(1000) NOT NULL,
+  `creationTime` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `comment`
+--
+
+LOCK TABLES `comment` WRITE;
+/*!40000 ALTER TABLE `comment` DISABLE KEYS */;
+INSERT INTO `comment` VALUES (1,16,'Citizen','The test comment here is','2018-05-06 21:42:19'),(2,16,'Hubalailo','The second test comment here is','2018-05-06 21:43:31'),(3,16,'Never Surrender','The third test comment here is','2018-05-06 21:47:24');
+/*!40000 ALTER TABLE `comment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `post`
 --
 
@@ -134,4 +161,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-03 20:04:50
+-- Dump completed on 2018-05-07  0:00:12

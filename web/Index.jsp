@@ -39,7 +39,7 @@
 <div class="container-fluid">
     <div class="row">
 
-        <div class="col-lg-3 " >
+        <div class="col-lg-3">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span >Categories</span>
                 <span class="badge badge-secondary badge-pill"><%=categories.size()%></span>
@@ -99,8 +99,8 @@
         </div>
 
 
-        <div class="col-lg-2 " >
-            <h3 style=" color: #b94a48;">Our Bloggers</h3>
+        <div class="col-lg-3">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">Our Bloggers</h4>
             <ul class="list-group ">
                 <% for(Profile pr:users){
                 String imgsrc = !StringUtils.isNullOrWhitespace(pr.getImageSrc())?"img/"+pr.getImageSrc(): "//via.placeholder.com/50x50";%>
@@ -110,6 +110,8 @@
 
                         <h6><%=pr.getFirstName()%></h6>
                         <h6 ><%=pr.getLastName()%></h6>
+                        <h6 ><%=pr.getHighlight()%></h6>
+
 
 
                     </div>
