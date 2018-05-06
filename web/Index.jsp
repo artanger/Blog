@@ -7,7 +7,8 @@
 <html>
 <head>
     <title>Profile</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animhead.css">
     <link rel="stylesheet" href="css/fontawesome-all.min.css" />
@@ -35,9 +36,10 @@
         </div>
     </div>
 
+<div class="container-fluid">
     <div class="row">
 
-        <div class="column side" >
+        <div class="col-lg-3 " >
             <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span >Categories</span>
                 <span class="badge badge-secondary badge-pill"><%=categories.size()%></span>
@@ -56,12 +58,13 @@
             </ul>
 
         </div>
-        <div class="column middle" >
+
+        <div class="col-lg-6 ">
             <div class="content" >
                 <% for(Post p:posts){%>
                 <div class="containerpost">
                     <div class="contentpost">
-                        <div class="cardpost" >
+                        <div class="cardpost "  >
                             <h3 style="color: #b94a48;" ><%=p.getTitle()%></h3>
                             <ul id="postinfo">
                                 <li>
@@ -78,14 +81,13 @@
                                 </li>
 
                             </ul>
-
                             <div class="txtpost">
                                 <p ><%=p.getIntroduction()%></p>
                             </div>
-
                             <div>
-                                <a href="/post?id=<%=p.getId()%>" class="btn btn-warning">Read more ...</a>
+                                <a href="/post?id=<%=p.getId()%>" class="btn btn-warning float-right">Read more ...</a>
                             </div>
+
 
 
                         </div>
@@ -97,26 +99,35 @@
         </div>
 
 
-        <div class="column right" >
+        <div class="col-lg-2 " >
             <h3 style=" color: #b94a48;">Our Bloggers</h3>
-            <div class="bloggers">
-                <ul>
-                    <li>
-                        <img src="img/img_avatar.png" alt="Avatar" class="avatar">
-                    </li>
-                    <li>
-                        <img src="img/img_avatar2.png" alt="Avatar" class="avatar">
-                    </li>
+            <ul class="list-group ">
+                <% for(Profile pr:users){
+                String imgsrc = !StringUtils.isNullOrWhitespace(pr.getImageSrc())?"img/"+pr.getImageSrc(): "//via.placeholder.com/50x50";%>
+                <li class="list-group-item ">
+                    <img src="<%=imgsrc%>" alt="" style="width: 50px; height: 50px;" class="rounded-circle">
+                    <div class="align-items-center">
 
-                </ul>
-
-            </div>
+                        <h6><%=pr.getFirstName()%></h6>
+                        <h6 ><%=pr.getLastName()%></h6>
 
 
+                    </div>
 
+                </li>
+                <%}%>
+            </ul>
         </div>
     </div>
 
+
+
+</div>
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-3.1.1.slim.min.js" crossorigin="anonymous"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
