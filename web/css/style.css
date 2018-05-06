@@ -1,53 +1,76 @@
 
-
 * {
-    margin: 0;
-    padding: 0;
-}
-body{
+    margin:0px;
+    padding:0px;
 
 }
-.bghead{
 
-    margin: 0;
-    padding: 0;
-    height: 1500px;
-    background-image: linear-gradient(-10deg, #fff 0%,#fff 50.9%,#3690f0 51%,#1e69de 100%);
+body {
+    font-family: Arial, Helvetica, sans-serif;
 
 }
-#namepage{
+
+.header {
+    padding: 30px;
     text-align: center;
-    font-weight: 500;
-    font-size: 150px;
-    color: #fff;
-    padding-top: 50px;
+    font-size: 35px;
+    box-shadow: 0px 0px 50px 0px #ccc;
 }
+
+
+.row {
+    display: -webkit-flex;
+    display: flex;
+    background: transparent;
+
+}
+
+
+
+.column {
+    padding: 10px;
+    margin:30px;
+
+}
+
+
+.column.side {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.column.right{
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.column.middle {
+    flex: 4;
+    box-shadow: 0px 0px 5px 0px #ccc;
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+}
+
 .card {
     width: 550px;
     height: 100px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
 
-.container{
-    width: 980px;
-    background: #3690F0;
-    margin: 30px auto;
-    padding: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
 }
 .containerpost{
-    width: 600px;
-    background: #3690F0;
+    width: 1200px;
+
     margin: 30px auto;
     padding: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
 }
-
 
 .content{
     text-align: center;
+    margin: 30px auto;
 }
 .contentpost{
     text-align: justify;
@@ -63,14 +86,11 @@ body{
 }
 
 .cardpost{
-    background-image: linear-gradient(-25deg, #1e69de 0%,#1e69de 50.9%,#3690f0 51%,#1e69de 100%);
     display: inline-block;
     width: 550px;
     height: 150px;
     padding: 20px;
     margin-bottom: 20px;
-
-
 }
 
 .card img{
@@ -84,41 +104,61 @@ body{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 }
 
-
 .txt {
-    vertical-align: top;
     display: inline-block;
-    color: #fff;
+    color: #1d1e1f;
     width: 150px;
-
 }
+
 .txtpost{
     display: block;
-    vertical-align: middle;
-    color: #fff;
+    color: #1d1e1f;
     width:500px;
-    padding-left: 3%;
 
 }
+
 ul li{
     display: inline-block;
-    color: #fff;
+    color: #1d1e1f;
+
+
+}
+a{
+    text-decoration: none;
+    color: #1d1e1f;
+
 }
 
-ul#postinfo  {
-    display: block;
-    padding: 12px 0;
-    margin: 0 0 29px;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 1.333;
+#postinfo  {
+    padding: 15px 0px 20px 30px;
+    margin: 20px 20px 20px;
     border-top: 1px solid #e0e0e0;
     border-bottom: 1px solid #e0e0e0;
-    overflow: hidden;
-    max-width: 100%;
+    width: 200%;
+
 }
 
+.categories{
+    border-bottom: 1px solid #e0e0e0;
 
+}
 
+.categories,.categorieslist {
+    display: block;
+    padding: 5px 30px;
+
+}
+.bloggers{
+    border-bottom: 1px solid #e0e0e0;
+
+}
+
+.bloggers,.avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 5px;
+}
 
 
