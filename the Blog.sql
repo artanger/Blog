@@ -27,7 +27,7 @@ CREATE TABLE `categories` (
   `name` varchar(100) DEFAULT NULL,
   `description` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,8 +36,34 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (1,'Other','Any information that doesn\'t siut to another categories.'),(2,'IT technologies','All related to the IT industry.'),(3,'Heroes','All about of the super heroes.');
+INSERT INTO `categories` VALUES (1,'Other','Any information that doesn\'t siut to another categories.'),(2,'IT technologies','All related to the IT industry.'),(3,'Heroes','All about of the super heroes.'),(4,'Cycling','All about Cycling');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `comment`
+--
+
+DROP TABLE IF EXISTS `comment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `comment` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `postId` int(10) NOT NULL,
+  `author` varchar(250) NOT NULL,
+  `text` varchar(1000) NOT NULL,
+  `time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `comment`
+--
+
+LOCK TABLES `comment` WRITE;
+/*!40000 ALTER TABLE `comment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -56,7 +82,7 @@ CREATE TABLE `post` (
   `categoryId` int(10) NOT NULL,
   `introduction` varchar(2500) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +91,7 @@ CREATE TABLE `post` (
 
 LOCK TABLES `post` WRITE;
 /*!40000 ALTER TABLE `post` DISABLE KEYS */;
-INSERT INTO `post` VALUES (1,'First Post','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non condimentum mauris, et dignissim diam. Curabitur varius lobortis nunc, sed aliquam quam feugiat ut. Sed id orci nisl.','2018-01-14 02:04:02',1,1,''),(2,'s','sdddddddddddddd','2018-01-14 02:04:03',2,1,''),(3,'Third post','<p>test&nbsp; &nbsp; ffffffffffffffffffffffffff</p>','2018-01-14 02:04:07',1,1,''),(4,'Forth post','ghjghjghj ghjghjghj ghjghjghj','2018-01-14 02:22:03',1,1,''),(5,'wwwwwwwwww','wwwwwwwwwwwwwwwwwwwwwwww','2018-01-14 02:22:03',1,1,''),(6,'ddddddddd','ddddddddddd','2018-01-14 13:55:49',1,1,''),(8,'asdasdasd','<p>asdasdasd test</p>','2018-01-14 17:18:02',1,1,''),(9,'ggg','ggg','2018-01-14 17:20:45',1,1,''),(10,'sdfsdfsdfsdf','sdfsdfsdfsdf','2018-01-14 17:27:04',1,1,''),(11,'elevens post','ddddddddddddddddddddddddddddddddddddddddddddddddd','2018-01-14 19:02:39',1,1,''),(12,'test tiny mce 1','<p>ddddddddddddddddddddddddddddddddddddd</p>\r\n<p>&nbsp;</p>','2018-01-14 22:50:18',1,1,''),(13,'','<p>jjjjjjjjjj</p>\r\n<p>SDGsdgh</p>\r\n<p>SDGASDFHG</p>\r\n<p>ADFEHQDFH</p>\r\n<p>SDFHJSDAFGHJ</p>','2018-01-14 23:29:13',1,1,''),(14,'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ','<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit.&nbsp;</p>','2018-05-02 18:25:06',1,1,''),(15,'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ','<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit.&nbsp;</p>','2018-05-02 18:25:13',1,1,'');
+INSERT INTO `post` VALUES (1,'First Post','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non condimentum mauris, et dignissim diam. Curabitur varius lobortis nunc, sed aliquam quam feugiat ut. Sed id orci nisl.','2018-01-14 02:04:02',1,1,'In your blog introduction, you need to create a big WHY for the reader.'),(2,'s','sdddddddddddddd','2018-01-14 02:04:03',2,1,'In your blog introduction, you need to create a big WHY for the reader.'),(3,'Third post','<p>test&nbsp; &nbsp; ffffffffffffffffffffffffff</p>','2018-01-14 02:04:07',1,1,'In your blog introduction, you need to create a big WHY for the reader.'),(4,'Forth post','ghjghjghj ghjghjghj ghjghjghj','2018-01-14 02:22:03',1,1,'In your blog introduction, you need to create a big WHY for the reader.'),(5,'wwwwwwwwww','wwwwwwwwwwwwwwwwwwwwwwww','2018-01-14 02:22:03',1,1,'In your blog introduction, you need to create a big WHY for the reader.'),(6,'ddddddddd','ddddddddddd','2018-01-14 13:55:49',1,1,'In your blog introduction, you need to create a big WHY for the reader.'),(8,'asdasdasd','<p>asdasdasd test</p>','2018-01-14 17:18:02',1,1,'In your blog introduction, you need to create a big WHY for the reader.'),(9,'ggg','<p>ggg</p>','2018-01-14 17:20:45',1,2,'In your blog introduction, you need to create a big WHY for the reader.'),(10,'sdfsdfsdfsdf','<p>sdfsdfsdfsdf</p>','2018-01-14 17:27:04',1,1,'In your blog introduction, you need to create a big WHY for the reader.'),(11,'elevens post','<p>ddddddddddddddddddddddddddddddddddddddddddddddddd</p>','2018-01-14 19:02:39',1,3,'In your blog introduction, you need to create a big WHY for the reader.'),(12,'test tiny mce 1','<p>ddddddddddddddddddddddddddddddddddddd</p>\r\n<p>&nbsp;</p>','2018-01-14 22:50:18',1,3,'In your blog introduction, you need to create a big WHY for the reader.'),(13,'Thirhteen post','<p>jjjjjjjjjj</p>\r\n<p>SDGsdgh</p>\r\n<p>SDGASDFHG</p>\r\n<p>ADFEHQDFH</p>\r\n<p>SDFHJSDAFGHJ</p>','2018-01-14 23:29:13',1,2,'In your blog introduction, you need to create a big WHY for the reader.'),(14,'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ','<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit.&nbsp;</p>','2018-05-02 18:25:06',1,1,'In your blog introduction, you need to create a big WHY for the reader.'),(15,'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ','<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit.&nbsp;</p>','2018-05-02 18:25:13',1,1,'In your blog introduction, you need to create a big WHY for the reader.'),(16,'Another one post','<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget enim diam. Donec sed consectetur lacus. Cras efficitur risus diam, at porta mauris convallis et. Nulla mi purus, placerat vitae tellus vitae, consectetur scelerisque lacus. Curabitur sodales in ipsum in tempus. Integer eget dui risus. Praesent varius venenatis est egestas mattis. Aliquam eu felis vel ligula volutpat faucibus. Fusce vel erat pulvinar, molestie purus vel, malesuada sem. Integer gravida lacinia elit lacinia condimentum. Phasellus ut hendrerit magna. Aliquam ac arcu fringilla, sagittis quam et, ultricies nisi. Aliquam consectetur accumsan urna sed pellentesque. Vivamus blandit nisi vel sem hendrerit tempor non in magna.</p>\r\n<p>Maecenas maximus pretium justo, at eleifend mauris efficitur sed. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce eu quam elit. Phasellus sed odio at orci viverra efficitur. Duis at nulla at enim condimentum mattis et a mauris. Vivamus condimentum turpis justo, quis tempor purus dapibus at. Curabitur nulla tortor, hendrerit quis ullamcorper et, congue tincidunt magna. Duis quis orci lorem. Fusce eget cursus tortor, vitae vestibulum metus. Aliquam eu lacinia risus. Proin elit orci, tempus sit amet ante sit amet, commodo sodales lorem.</p>\r\n<p>Vestibulum rutrum urna enim, et mollis nisl feugiat in. Proin sed consequat ipsum. Nam ornare in eros a laoreet. Cras eget mauris malesuada, cursus nisi nec, convallis felis. Praesent tristique risus neque, id tincidunt nibh varius ut. Aenean mi enim, ultrices non quam sit amet, ornare varius arcu. Nam tempor est id lectus volutpat molestie. Etiam euismod leo nunc, et sagittis odio rutrum eu. Quisque euismod mattis lacus, nec faucibus arcu porta ut.</p>\r\n<p>Ut sed sollicitudin leo. Duis sit amet iaculis velit. Sed quis felis mauris. Vestibulum luctus enim semper sagittis convallis. Phasellus tempor rutrum cursus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer euismod dignissim rhoncus. Pellentesque sapien urna, dapibus imperdiet bibendum vitae, aliquet vitae odio.</p>\r\n<p>Integer et neque condimentum, elementum justo id, vehicula tortor. Sed a tincidunt risus. Aenean tortor ligula, euismod varius ligula ac, cursus tempus sem. Vivamus in pharetra quam. Donec sagittis sapien ac nisl fringilla, eu bibendum ex congue. In malesuada auctor sapien in congue. Donec venenatis lectus id dolor rutrum, suscipit semper mauris dapibus. Duis laoreet vitae urna et rhoncus. Aliquam consectetur, purus vitae dignissim luctus, eros lorem lobortis urna, vel egestas ipsum tellus quis velit. Fusce eget ultricies sapien. Vivamus nec imperdiet felis, ac ultricies metus. Duis ac nisl auctor, accumsan libero eu, porttitor nibh. Ut tincidunt mauris id quam semper malesuada. In elementum mi risus. Nam faucibus neque ac mi congue porttitor.</p>','2018-05-03 20:00:34',2,3,'This is an introduction');
 /*!40000 ALTER TABLE `post` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -134,4 +160,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-03 17:07:23
+-- Dump completed on 2018-05-06 21:31:10

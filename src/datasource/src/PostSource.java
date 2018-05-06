@@ -2,6 +2,7 @@ package datasource.src;
 
 import datasource.abs.PostDataSource;
 import datasource.base.DatabaseConnection;
+import model.Comment;
 import model.Post;
 import java.sql.*;
 import java.util.LinkedList;
@@ -26,7 +27,6 @@ public class PostSource extends DatabaseConnection implements PostDataSource {
     @Override
     public LinkedList<Post> getPosts(int userId) {
         LinkedList<Post> posts = new LinkedList<>();
-
         try {Connection connection = super.getConnection();
             PreparedStatement stmt = connection.prepareStatement(
                     "SELECT p.*, c.name as categoryName, r.firstname as userFirstName, r.lastname as userLastName\n" +
@@ -66,7 +66,6 @@ public class PostSource extends DatabaseConnection implements PostDataSource {
     @Override
     public LinkedList<Post> getPosts() {
         LinkedList<Post> posts = new LinkedList<>();
-
         try (Connection connection = super.getConnection();
             Statement stmt = connection.createStatement()) {
             ResultSet resultSet = stmt.executeQuery(
@@ -134,6 +133,48 @@ public class PostSource extends DatabaseConnection implements PostDataSource {
         }
     }
 
+    @Override
+    public LinkedList<Comment> getCommentsForPost(int postId, int limit) {
+        LinkedList<Comment> comments = new LinkedList<>();
+        try {Connection connection = super.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "SELECT * FROM comment WHERE postId = ? ORDER BY creationTime DESC LIMIT ?");
+            preparedStatement.setInt(1, postId);
+            preparedStatement.setInt(2, limit);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            retrieveCommentRows(comments, resultSet);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return comments;
+    }
+
+    private void retrieveCommentRows(LinkedList<Comment> comments, ResultSet resultSet) throws SQLException {
+        while (resultSet.next()){
+            comments.add(retrieveCommentRow(resultSet));
+        }
+    }
+
+    private Comment retrieveCommentRow(ResultSet resultSet) throws SQLException {
+        Comment row = new Comment(
+                resultSet.getInt("postId"),
+                resultSet.getString("author"),
+                resultSet.getString("text")
+        );
+
+        Integer commentIdDbValue = resultSet.getInt("id");
+        if (commentIdDbValue != null){
+            row.setCommentId(commentIdDbValue);
+        }
+
+        Date creationTimeDbValue = resultSet.getDate("creationTime");
+        if (creationTimeDbValue != null){
+            row.setCreationTime(creationTimeDbValue);
+        }
+
+        return row;
+    }
+
     private void retrievePostRows(LinkedList<Post> posts, ResultSet resultSet) throws SQLException {
         while (resultSet.next()){
             posts.add(retrievePostRow(resultSet));
@@ -181,6 +222,7 @@ public class PostSource extends DatabaseConnection implements PostDataSource {
             if (!StringUtils.isNullOrEmpty(introductionDbValue)){
                 postRow.setIntroduction(introductionDbValue);
             }
+
             return postRow;
     }
 }

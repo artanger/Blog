@@ -5,6 +5,7 @@ import datasource.src.CategoryDb;
 import datasource.src.PostSource;
 import datasource.src.UserDb;
 import model.Category;
+import model.Comment;
 import model.Post;
 import model.Profile;
 
@@ -29,6 +30,13 @@ public class PostDetailsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String postId = req.getParameter("id");
+        Post post = postSource.getPost(postId);
+        req.setAttribute("postdetails", post);
+
+        LinkedList<Comment> comments = postSource.getCommentsForPost(Integer.parseInt(postId), 1000);
+        req.setAttribute("comments", comments);
+
         LinkedList<Post> posts = postSource.getRecentPosts(5);
         req.setAttribute("post", posts);
 

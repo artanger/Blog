@@ -1,5 +1,6 @@
 package datasource.abs;
 
+import model.Comment;
 import model.Post;
 
 import java.util.LinkedList;
@@ -19,4 +20,6 @@ public interface PostDataSource {
     Post getPost(String id);
 
     void deletePost(String id);
+
+    LinkedList<Comment> getCommentsForPost(int postId, int limit);
 }
