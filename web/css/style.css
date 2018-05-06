@@ -162,3 +162,12 @@ a{
 }
 
 
+
+.column.side h4 {
+    color: #b94a48;
+}
+
+.column.side .badge-secondary {
+    color: #fff;
+    background-color: #b94a48;
+}

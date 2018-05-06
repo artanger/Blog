@@ -1,12 +1,13 @@
 <%@ page import="model.Post" %>
 <%@ page import="java.util.LinkedList" %>
 <%@ page import="model.Profile" %>
-<%@ page import="datasource.src.StringUtils" %><%--
+<%@ page import="datasource.src.StringUtils" %>
+<%@ page import="model.Category" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Profile</title>
-    <%--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">--%>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animhead.css">
     <link rel="stylesheet" href="css/fontawesome-all.min.css" />
@@ -17,6 +18,7 @@
 
 <% LinkedList<Post> posts = (LinkedList<Post>)request.getAttribute("post");%>
 <% LinkedList<Profile> users = (LinkedList<Profile>)request.getAttribute("profile");%>
+<% LinkedList<Category> categories = (LinkedList<Category>)request.getAttribute("categories");%>
 
 
     <div class="header">
@@ -36,21 +38,22 @@
     <div class="row">
 
         <div class="column side" >
-            <h3 style=" color: #b94a48; ">Categories</h3>
-            <div class="categories">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span >Categories</span>
+                <span class="badge badge-secondary badge-pill"><%=categories.size()%></span>
+            </h4>
 
-                <div class="categorieslist">
-                    <ul >
-                        <li>Other</li>
-                        <li>IT technologies</li>
-                        <li>Heroes</li>
-                        <li>Cycling</li>
-
-                    </ul>
-                </div>
-
-            </div>
-
+            <ul class="list-group mb-3">
+                <% for(Category c:categories){%>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0"><%=c.getName()%></h6>
+                        <small class="text-muted"><%=c.getDescription()%></small>
+                    </div>
+                    <span class="text-muted">0</span>
+                </li>
+                <%}%>
+            </ul>
 
         </div>
         <div class="column middle" >
@@ -79,6 +82,12 @@
                             <div class="txtpost">
                                 <p ><%=p.getIntroduction()%></p>
                             </div>
+
+                            <div>
+                                <a href="/post?id=<%=p.getId()%>" class="btn btn-warning">Read more ...</a>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -108,15 +117,8 @@
         </div>
     </div>
 
-
-
-
-
-
-
-
-
-    <%--<script src="vendor/jquery/jquery.min.js"></script>--%>
-    <%--<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>--%>
+    <script src="//code.jquery.com/jquery-3.1.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
 </html>

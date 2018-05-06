@@ -123,6 +123,15 @@
         <url-pattern>/ourbloggers</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>PostDetailsServlet</servlet-name>
+        <servlet-class>PostDetailsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>PostDetailsServlet</servlet-name>
+        <url-pattern>/post</url-pattern>
+    </servlet-mapping>
 
     <filter>
         <filter-name>authFilter</filter-name>

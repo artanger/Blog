@@ -16,12 +16,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.LinkedList;
 
-public class IndexServlet extends HttpServlet {
+public class PostDetailsServlet extends HttpServlet {
     private ICategoryDb categoryDal;
     private IUserDb userDal;
     private PostDataSource postSource;
 
-    public IndexServlet(){
+    public PostDetailsServlet(){
         this.categoryDal = new CategoryDb();
         this.userDal = new UserDb();
         this.postSource = new PostSource();
@@ -29,16 +29,16 @@ public class IndexServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-            LinkedList<Post> posts = this.postSource.getRecentPosts(5);
-            req.setAttribute("post", posts);
+        LinkedList<Post> posts = postSource.getRecentPosts(5);
+        req.setAttribute("post", posts);
 
-            LinkedList<Profile> users = this.userDal.getAllProfiles();
-            req.setAttribute("profile", users);
+        LinkedList<Profile> users = userDal.getAllProfiles();
+        req.setAttribute("profile", users);
 
-            LinkedList<Category> categories = this.categoryDal.getCategories();
-            req.setAttribute("categories", categories);
+        LinkedList<Category> categories = this.categoryDal.getCategories();
+        req.setAttribute("categories", categories);
 
-            RequestDispatcher dispatcher = req.getRequestDispatcher("Index.jsp");
-            dispatcher.forward(req, resp);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("PostDetails.jsp");
+        dispatcher.forward(req, resp);
     }
 }
