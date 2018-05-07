@@ -7,7 +7,8 @@
 <head>
     <title>Profile</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+    <%--<link rel="stylesheet" href="css/style.css">--%>
+    <link rel="stylesheet" href="css/ourbloggers.css">
 
 </head>
 <body>
@@ -20,15 +21,15 @@
                     </div>
                 </div>
 
-                <div class="container-fluid">
+                <div class="container-fluid ">
                     <div class="row">
                         <div class="d-flex flex-wrap justify-content-center">
 
                             <% for(Profile p:users){
                                 String imgsrc = !StringUtils.isNullOrWhitespace(p.getImageSrc())?"img/"+p.getImageSrc(): "//via.placeholder.com/70x70";%>
 
-                            <div class="card text-white bg-dark mb-3 text-center" style="width: 18rem;">
-                                <div class="card-header bg-secondary mb-3">
+                            <div class="card text-white bg-primary mb-3 text-center  border-0 shcard" style="width: 18rem;">
+                                <div class="card-header bg-light  border-bottom border-primary ">
                                      <img src="<%=imgsrc%>" alt="" style="width: 70px; height: 70px; " class="img-fluid rounded-circle ">
                                 </div>
                                 <div class="card-body">
