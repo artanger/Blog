@@ -72,7 +72,7 @@
 
                 <div class="add-comment">
                     <h4 class="mb-3">Add comment</h4>
-                    <form class="needs-validation" novalidate="" action="/post?id=<%=postdetails.getId()%>" method="post">
+                    <form class="needs-validation" action="/post?id=<%=postdetails.getId()%>" method="post">
                         <div class="row">
                             <div class="col mb-3">
                                 <label for="author">Your Name</label>
@@ -93,6 +93,7 @@
                         <input type="hidden" name="postId" value="<%=postdetails.getId()%>" />
                     </form>
                 </div>
+
             </div>
         </div>
 

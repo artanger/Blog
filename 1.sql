@@ -54,7 +54,7 @@ CREATE TABLE `comment` (
   `text` varchar(1000) NOT NULL,
   `creationTime` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,7 +63,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT INTO `comment` VALUES (1,16,'Citizen','The test comment here is','2018-05-06 21:42:19'),(2,16,'Hubalailo','The second test comment here is','2018-05-06 21:43:31'),(3,16,'Never Surrender','The third test comment here is','2018-05-06 21:47:24'),(4,16,'Hubalailo','Yet another comment from huba','2018-05-07 12:52:29'),(5,16,'Hubalailo','Yet another comment from huba','2018-05-07 12:58:14'),(6,16,'','','2018-05-07 12:58:18');
+INSERT INTO `comment` VALUES (1,16,'Citizen','The test comment here is','2018-05-06 21:42:19'),(2,16,'Hubalailo','The second test comment here is','2018-05-06 21:43:31'),(3,16,'Never Surrender','The third test comment here is','2018-05-06 21:47:24'),(4,16,'Hubalailo','Yet another comment from huba','2018-05-07 12:52:29'),(5,16,'Hubalailo','Yet another comment from huba','2018-05-07 12:58:14'),(8,16,'Hubalailo','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.','2018-05-07 13:12:17'),(18,16,'Vasia','It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).','2018-05-07 13:24:48');
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -179,4 +179,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-07 13:05:24
+-- Dump completed on 2018-05-07 13:31:01

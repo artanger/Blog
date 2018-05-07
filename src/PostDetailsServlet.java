@@ -3,6 +3,7 @@ import datasource.abs.IUserDb;
 import datasource.abs.PostDataSource;
 import datasource.src.CategoryDb;
 import datasource.src.PostSource;
+import datasource.src.StringUtils;
 import datasource.src.UserDb;
 import model.*;
 
@@ -57,8 +58,10 @@ public class PostDetailsServlet extends HttpServlet {
                 if ("newcomment".equalsIgnoreCase(action)) {
                     String author = req.getParameter("author");
                     String text = req.getParameter("text");
-                    Comment addedComment = new Comment(Integer.parseInt(postId), author, text);
-                    this.postSource.addComment(addedComment);
+                    if (!StringUtils.isNullOrWhitespace(author) && !StringUtils.isNullOrWhitespace(text) && !StringUtils.isNullOrWhitespace(postId)){
+                        Comment addedComment = new Comment(Integer.parseInt(postId), author, text);
+                        this.postSource.addComment(addedComment);
+                    }
                 }
             doGet(req, resp);
         } catch (Exception e) {

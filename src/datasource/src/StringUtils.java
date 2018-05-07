@@ -6,7 +6,7 @@ public class StringUtils {
     }
 
     public static boolean isNullOrWhitespace(String s) {
-        return s == null || isWhitespace(s);
+        return s == null || s == "" || isWhitespace(s);
 
     }
     private static boolean isWhitespace(String s) {
