@@ -8,7 +8,7 @@
 <script src="tinymce_4.7.4/tinymce/js/tinymce/tinymce.min.js"></script>
 <script>
     tinymce.init({
-        selector: 'textarea',
+        selector: 'textarea.mce',
         height: 500,
         plugins: [
             "advlist autolink lists link image charmap print preview anchor",

@@ -49,6 +49,7 @@
                 <p><%=postdetails.getTime()%></p>
                 <p><%=postdetails.getCategoryName()%></p>
                 <p><%=postdetails.getCategoryId()%></p>
+                <p><%=postdetails.getCommentsCount()%></p>
 
                 <% if (comments.size() > 0) {%>
                 <div class="comments">

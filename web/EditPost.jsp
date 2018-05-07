@@ -18,7 +18,7 @@
             <form method="post" action="/posts" class="form" role="form" >
                 <div class="form-group">
                     <label class="col-sm-2 col-form-label">Title</label>
-                    <input class="form-control col-12"  type="text" name="title" id="title" value="<%=post.getTitle()%>">
+                    <input class="form-control col-12"  type="text" name="title" id="title" value="<%=post.getTitle()%>" maxlength="500">
                     </br>
                 </div>
                 <div class="form-group ">
@@ -32,12 +32,11 @@
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 col-form-label">Introduction</label>
-                    <input class="form-control col-12"  type="text" name="introduction" id="introduction" value="<%=post.getIntroduction()%>">
-                    </br>
+                    <textarea class="form-control col-12"  type="text" name="introduction" id="introduction" maxlength="2500" rows="3"><%=post.getIntroduction()%></textarea>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 col-form-label">Text</label>
-                    <textarea rows="4" name="text" id="text" class="form-control col-12"><%=post.getText()%></textarea>
+                    <textarea rows="6" name="text" id="text" class="form-control col-12 mce"><%=post.getText()%></textarea>
                     </br>
                     <input type="submit" value="Save" class="btn btn-outline-primary">
                     <input type="hidden" name="action" value="savepost" />

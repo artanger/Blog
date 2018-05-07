@@ -47,7 +47,7 @@ ul li{
 }
 a{
     text-decoration: none;
-    color: #1d1e1f;
+    color: /*#1d1e1f;*/  #0056b3;
 
 }
 a:hover{

@@ -59,8 +59,11 @@ public class PostDetailsServlet extends HttpServlet {
                     String author = req.getParameter("author");
                     String text = req.getParameter("text");
                     if (!StringUtils.isNullOrWhitespace(author) && !StringUtils.isNullOrWhitespace(text) && !StringUtils.isNullOrWhitespace(postId)){
-                        Comment addedComment = new Comment(Integer.parseInt(postId), author, text);
+                        int postIdInt = Integer.parseInt(postId);
+                        Comment addedComment = new Comment(postIdInt, author, text);
                         this.postSource.addComment(addedComment);
+                        int commentsCount = this.postSource.getCommentsCount(postIdInt);
+                        this.postSource.updateCommentsCount(commentsCount, postIdInt);
                     }
                 }
             doGet(req, resp);

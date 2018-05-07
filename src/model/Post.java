@@ -15,6 +15,7 @@ public class Post {
     private String userFirstName = "";
     private String userLastName = "";
     private String introduction;
+    private int commentsCount;
 
     public Post(int id, String title, String text) {
         this.id = id;
@@ -83,4 +84,7 @@ public class Post {
 
     public String getIntroduction() { return this.introduction; }
     public void setIntroduction(String introduction) { this.introduction = introduction; }
+
+    public int getCommentsCount() { return commentsCount; }
+    public void setCommentsCount(int commentsCount) { this.commentsCount = commentsCount; }
 }
