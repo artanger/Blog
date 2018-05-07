@@ -22,4 +22,6 @@ public interface PostDataSource {
     void deletePost(String id);
 
     LinkedList<Comment> getCommentsForPost(int postId, int limit);
+
+    void addComment(Comment comment);
 }

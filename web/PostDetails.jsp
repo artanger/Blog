@@ -67,12 +67,12 @@
                     </li>
                     <%}%>
                     </ul>
-                <%}%>
                 </div>
+                <%}%>
 
                 <div class="add-comment">
                     <h4 class="mb-3">Add comment</h4>
-                    <form class="needs-validation" novalidate="">
+                    <form class="needs-validation" novalidate="" action="/post?id=<%=postdetails.getId()%>" method="post">
                         <div class="row">
                             <div class="col mb-3">
                                 <label for="author">Your Name</label>
@@ -83,20 +83,17 @@
                         <div class="row">
                             <div class="col mb-3">
                                 <label for="text">Comment</label>
-                                <textarea class="form-control" id="text" name="text" placeholder="Write a Response" value="" required="true" rows="4" maxlength="5000"></textarea>
+                                <textarea class="form-control" id="text" name="text" placeholder="Write a Response" value="" required="true" rows="4" maxlength="1000"></textarea>
                                 <div class="invalid-feedback">Text for comment is required.</div>
                             </div>
                         </div>
-
                         <hr class="mb-4">
                         <button class="btn btn-primary " type="submit">Post comment</button>
+                        <input type="hidden" name="action" value="newcomment" />
+                        <input type="hidden" name="postId" value="<%=postdetails.getId()%>" />
                     </form>
                 </div>
-
-
-
             </div>
-
         </div>
 
         <div class="col-3 side mt-4" >

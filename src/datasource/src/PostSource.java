@@ -149,6 +149,19 @@ public class PostSource extends DatabaseConnection implements PostDataSource {
         return comments;
     }
 
+    @Override
+    public void addComment(Comment comment) {
+        try {Connection connection = super.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO comment (postId, author, text) VALUES (?, ?, ?)");
+            preparedStatement.setInt(1, comment.getPostId());
+            preparedStatement.setString(2, comment.getAuthor());
+            preparedStatement.setString(3, comment.getText());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void retrieveCommentRows(LinkedList<Comment> comments, ResultSet resultSet) throws SQLException {
         while (resultSet.next()){
             comments.add(retrieveCommentRow(resultSet));
