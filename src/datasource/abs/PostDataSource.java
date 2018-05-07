@@ -24,4 +24,8 @@ public interface PostDataSource {
     LinkedList<Comment> getCommentsForPost(int postId, int limit);
 
     void addComment(Comment comment);
+
+    int getCommentsCount(int postId);
+
+    void updateCommentsCount(int commentsCount, int postId);
 }

@@ -162,6 +162,35 @@ public class PostSource extends DatabaseConnection implements PostDataSource {
         }
     }
 
+    @Override
+    public int getCommentsCount(int postId) {
+        int result = 0;
+        try {Connection connection = super.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT count(id) as commentsCount FROM comment WHERE postId = ?");
+            preparedStatement.setInt(1, postId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()){
+                result = resultSet.getInt("commentsCount");
+            }
+            return result;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @Override
+    public void updateCommentsCount(int commentsCount, int postId ) {
+        try {Connection connection = super.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE post SET commentsCount = ? WHERE id = ?");
+            preparedStatement.setInt(1, commentsCount);
+            preparedStatement.setInt(2, postId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void retrieveCommentRows(LinkedList<Comment> comments, ResultSet resultSet) throws SQLException {
         while (resultSet.next()){
             comments.add(retrieveCommentRow(resultSet));
@@ -234,6 +263,11 @@ public class PostSource extends DatabaseConnection implements PostDataSource {
             String introductionDbValue = resultSet.getString("introduction");
             if (!StringUtils.isNullOrEmpty(introductionDbValue)){
                 postRow.setIntroduction(introductionDbValue);
+            }
+
+            Integer commentsCountDbValue = resultSet.getInt("commentsCount");
+            if (commentsCountDbValue != null && commentsCountDbValue != -1){
+                postRow.setCommentsCount(commentsCountDbValue);
             }
 
             return postRow;
