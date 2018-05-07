@@ -3,7 +3,7 @@
 -- Host: 127.0.0.1    Database: mypost
 -- ------------------------------------------------------
 -- Server version	5.5.5-10.1.29-MariaDB
-
+use mypost;
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -54,7 +54,7 @@ CREATE TABLE `comment` (
   `text` varchar(1000) NOT NULL,
   `creationTime` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,9 +63,27 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT INTO `comment` VALUES (1,16,'Citizen','The test comment here is','2018-05-06 21:42:19'),(2,16,'Hubalailo','The second test comment here is','2018-05-06 21:43:31'),(3,16,'Never Surrender','The third test comment here is','2018-05-06 21:47:24');
+INSERT INTO `comment` VALUES (1,16,'Citizen','The test comment here is','2018-05-06 21:42:19'),(2,16,'Hubalailo','The second test comment here is','2018-05-06 21:43:31'),(3,16,'Never Surrender','The third test comment here is','2018-05-06 21:47:24'),(4,16,'Hubalailo','Yet another comment from huba','2018-05-07 12:52:29'),(5,16,'Hubalailo','Yet another comment from huba','2018-05-07 12:58:14'),(6,16,'','','2018-05-07 12:58:18');
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `mypost`.`comment_BEFORE_INSERT` BEFORE INSERT ON `comment` FOR EACH ROW
+BEGIN
+SET new.creationTime = now();
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `post`
@@ -161,4 +179,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-07  0:00:12
+-- Dump completed on 2018-05-07 13:05:24

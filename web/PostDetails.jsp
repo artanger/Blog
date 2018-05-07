@@ -76,14 +76,14 @@
                         <div class="row">
                             <div class="col mb-3">
                                 <label for="author">Your Name</label>
-                                <input type="text" class="form-control" id="author" name="author" placeholder="Enter Your Name" value="" required="true" maxlength="250">
+                                <input type="text" class="form-control" id="author" name="author" placeholder="Enter Your Name" maxlength="250" required>
                                 <div class="invalid-feedback">Name is required.</div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col mb-3">
                                 <label for="text">Comment</label>
-                                <textarea class="form-control" id="text" name="text" placeholder="Write a Response" value="" required="true" rows="4" maxlength="1000"></textarea>
+                                <textarea class="form-control" id="text" name="text" placeholder="Write a Response" rows="4" maxlength="1000" required></textarea>
                                 <div class="invalid-feedback">Text for comment is required.</div>
                             </div>
                         </div>
