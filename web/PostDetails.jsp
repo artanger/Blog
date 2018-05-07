@@ -18,7 +18,7 @@
 <body>
 <% Post postdetails = (Post)request.getAttribute("postdetails");%>
 <% LinkedList<Post> posts = (LinkedList<Post>)request.getAttribute("post");%>
-<% LinkedList<Profile> users = (LinkedList<Profile>)request.getAttribute("profile");%>
+
 <% LinkedList<Comment> comments = (LinkedList<Comment>)request.getAttribute("comments");%>
 
 
@@ -98,27 +98,7 @@
         </div>
 
         <div class="col-3 side mt-4" >
-            <div class="bloggers">
-                <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span >Our Bloggers</span>
-                    <span class="badge badge-secondary badge-pill"><%=users.size()%></span>
-                </h4>
-                <ul class="list-group mb-3">
-                    <% for(Profile pr:users){
-                        String imgsrc = !StringUtils.isNullOrWhitespace(pr.getImageSrc())?"img/"+pr.getImageSrc(): "//via.placeholder.com/50x50";%>
-                    <li class="list-group-item ">
-                        <a class="" href="/bloger?id=<%=pr.getProfileId()%>">
-                            <img class="avatar" src="<%=imgsrc%>" alt="<%=pr.getFirstName()%> <%=pr.getLastName()%>" >
-                            <div>
-                                <h5 class="my-0"><%=pr.getFirstName()%> <%=pr.getLastName()%></h5>
-                                <small class="text-muted"><%=pr.getHighlight()%></small>
-                            </div>
-
-                        </a>
-                    </li>
-                    <%}%>
-                </ul>
-            </div>
+            <jsp:include page="Parts/BloggersVidjet.jsp" />
         </div>
     </div>
 </div>
