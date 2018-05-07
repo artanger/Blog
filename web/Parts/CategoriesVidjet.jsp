@@ -12,7 +12,7 @@
         <% for(Category c:categories){%>
         <li class="list-group-item d-flex justify-content-between lh-condensed">
             <div>
-                <h6 class="my-0"><%=c.getName()%></h6>
+                <h5 class="my-0"><%=c.getName()%></h5>
                 <small class="text-muted"><%=c.getDescription()%></small>
             </div>
             <span class="text-muted">0</span>

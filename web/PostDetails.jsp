@@ -56,12 +56,14 @@
                     <ul class="ist-group" >
                     <% for(Comment cm:comments){%>
                     <li class="list-group-item">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"><%=cm.getAuthor()%></h5>
-                            <small><%=cm.getCreationTime()%></small>
+                        <img class="avatar" src="img/avatar_incognito.png" alt="avatar for comment" />
+                        <div class="content">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="author"><%=cm.getAuthor()%>:</h6>
+                                <small><%=cm.getCreationTime()%></small>
+                            </div>
+                            <p class="comment-text"><%=cm.getText()%></p>
                         </div>
-                        <p class="text-left"><%=cm.getText()%></p>
-
                     </li>
                     <%}%>
                     </ul>
@@ -108,9 +110,9 @@
                         String imgsrc = !StringUtils.isNullOrWhitespace(pr.getImageSrc())?"img/"+pr.getImageSrc(): "//via.placeholder.com/50x50";%>
                     <li class="list-group-item ">
                         <a class="" href="/bloger?id=<%=pr.getProfileId()%>">
-                            <img src="<%=imgsrc%>" alt="<%=pr.getFirstName()%> <%=pr.getLastName()%>" >
+                            <img class="avatar" src="<%=imgsrc%>" alt="<%=pr.getFirstName()%> <%=pr.getLastName()%>" >
                             <div>
-                                <h6 class="my-0"><%=pr.getFirstName()%> <%=pr.getLastName()%></h6>
+                                <h5 class="my-0"><%=pr.getFirstName()%> <%=pr.getLastName()%></h5>
                                 <small class="text-muted"><%=pr.getHighlight()%></small>
                             </div>
 
