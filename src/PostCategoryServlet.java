@@ -31,11 +31,10 @@ public class PostCategoryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String categoryId = req.getParameter("id");
-       // Post post = postSource.getPost(postId);
-       // req.setAttribute("postdetails", post);
+        req.setAttribute("categoryId", categoryId);
 
-     //   LinkedList<Post> posts = postSource.getRecentPosts(5);
-     //   req.setAttribute("post", posts);
+        LinkedList<Post> posts = postSource.getPostsByCategory(Integer.parseInt(categoryId), 10);
+        req.setAttribute("post", posts);
 
         LinkedList<Profile> users = userDal.getAllProfiles();
         req.setAttribute("profile", users);

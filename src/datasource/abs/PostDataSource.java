@@ -13,6 +13,10 @@ public interface PostDataSource {
 
     LinkedList<Post> getRecentPosts(int limit);
 
+    LinkedList<Post> getPostsByCategory(int categoryId, int limit);
+
+    LinkedList<Post> getPostsByAuthor(int userId, int limit);
+
     void addPost (Post post);
 
     void savePost (Post post);

@@ -64,6 +64,48 @@ public class PostSource extends DatabaseConnection implements PostDataSource {
     }
 
     @Override
+    public LinkedList<Post> getPostsByCategory(int categoryId, int limit) {
+        LinkedList<Post> posts = new LinkedList<>();
+        try {Connection connection = super.getConnection();
+            PreparedStatement stmt = connection.prepareStatement(
+                    "SELECT p.*, c.name as categoryName, r.firstname as userFirstName, r.lastname as userLastName\n" +
+                            "FROM post p\n" +
+                            "JOIN categories as c ON p.categoryId = c.id\n" +
+                            "JOIN registration as r ON p.userId = r.id\n" +
+                            "WHERE p.categoryId = ?\n" +
+                            "ORDER BY p.time DESC LIMIT ?");
+            stmt.setInt(1, categoryId);
+            stmt.setInt(2, limit);
+            ResultSet resultSet = stmt.executeQuery();
+            retrievePostRows(posts, resultSet);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return posts;
+    }
+
+    @Override
+    public LinkedList<Post> getPostsByAuthor(int userId, int limit) {
+        LinkedList<Post> posts = new LinkedList<>();
+        try {Connection connection = super.getConnection();
+            PreparedStatement stmt = connection.prepareStatement(
+                    "SELECT p.*, c.name as categoryName, r.firstname as userFirstName, r.lastname as userLastName\n" +
+                            "FROM post p\n" +
+                            "JOIN categories as c ON p.categoryId = c.id\n" +
+                            "JOIN registration as r ON p.userId = r.id\n" +
+                            "WHERE p.userId = ?\n" +
+                            "ORDER BY p.time DESC LIMIT ?");
+            stmt.setInt(1, userId);
+            stmt.setInt(2, limit);
+            ResultSet resultSet = stmt.executeQuery();
+            retrievePostRows(posts, resultSet);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return posts;
+    }
+
+    @Override
     public LinkedList<Post> getPosts() {
         LinkedList<Post> posts = new LinkedList<>();
         try (Connection connection = super.getConnection();

@@ -16,12 +16,7 @@
     <%--<script>tinymce.init({ selector:'textarea' });</script>--%>
 </head>
 <body>
-
 <% LinkedList<Post> posts = (LinkedList<Post>)request.getAttribute("post");%>
-<% LinkedList<Profile> users = (LinkedList<Profile>)request.getAttribute("profile");%>
-<% LinkedList<Category> categories = (LinkedList<Category>)request.getAttribute("categories");%>
-
-
     <div class="header">
         <div class="contentwrap">
             <ul class="fly-in-text">

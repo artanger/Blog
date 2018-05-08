@@ -1,4 +1,5 @@
-
+<%@ page import="model.Post" %>
+<%@ page import="java.util.LinkedList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="css/fontawesome-all.min.css" />
 </head>
 <body>
+<% LinkedList<Post> posts = (LinkedList<Post>)request.getAttribute("post");%>
 <div class="header">
     <div class="contentwrap">
         <ul class="fly-in-text">
@@ -30,7 +32,42 @@
         <div class="col-6 mt-4" >
             <div class="content" >
 
+                <% for(Post p:posts){%>
+                <div class="containerpost">
+                    <div class="contentpost">
+                        <div class="cardpost "  >
+                            <h3 style="color: #b94a48;" ><%=p.getTitle()%></h3>
+                            <ul id="postinfo">
+                                <li>
+                                    <a href="/category?id=<%=p.getCategoryId()%>">
+                                        <i class="fas fa-clipboard-list"></i><%=p.getCategoryName()%>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/bloger?id=<%=p.getUserId()%>">
+                                        <i class="fas fa-user-circle"></i><%=p.getUserShortName()%>
+                                    </a>
+                                </li>
+                                <li>
+                                    <i class="far fa-clock"></i><%=p.getTimeFormatted()%>
+                                </li>
+                                <li>
+                                    <i class="far fa-clock"></i><%=p.getCommentsCount()%>
+                                </li>
+                            </ul>
+                            <div class="txtpost">
+                                <p ><%=p.getIntroduction()%></p>
+                            </div>
+                            <div>
+                                <a href="/post?id=<%=p.getId()%>" class="btn btn-warning float-right">Read more ...</a>
+                            </div>
 
+
+
+                        </div>
+                    </div>
+                </div>
+                <%}%>
 
 
 
