@@ -15,11 +15,10 @@
                 <div>
                     <h5 class="my-0 d-flex justify-content-between align-items-center">
                         <span><%=c.getName()%></span>
-                        <span class="badge badge-secondary badge-pill">0</span>
+                        <span class="badge badge-secondary badge-pill" title="amount of posts for the category"><%=c.getPostsCount()%></span>
                     </h5>
                     <small class="text-muted"><%=c.getDescription()%></small>
                 </div>
-
             </a>
         </li>
         <%}%>

@@ -4,6 +4,7 @@ public class Category {
     private int categoryId;
     private String name;
     private String description;
+    private int postsCount;
 
     public Category(int categoryId, String name, String description){
         this.categoryId = categoryId;
@@ -22,4 +23,8 @@ public class Category {
     public String getDescription(){return this.description;}
 
     public void setDescription(String description){this.description = description;}
+
+    public int getPostsCount() { return postsCount; }
+
+    public void setPostsCount(int postsCount) { this.postsCount = postsCount; }
 }

@@ -13,4 +13,8 @@ public interface ICategoryDb {
     Category getCategory(String id);
 
     void deleteCategory(String id);
+
+    int getPostsCount(int categoryId);
+
+    void updatePoststsCount(int poststsCount, int categoryId);
 }

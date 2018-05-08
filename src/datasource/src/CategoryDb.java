@@ -48,16 +48,19 @@ public class CategoryDb extends DatabaseConnection implements ICategoryDb {
 
     @Override
     public Category getCategory(String id) {
+        Category row = new Category(-1, null, null);
         try {Connection connection = super.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM categories WHERE id = ?");
             preparedStatement.setString(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
-            Category row = retrieveCategoryRow(resultSet);
+            if (resultSet.next()){
+                row = retrieveCategoryRow(resultSet);
+            }
             if (row != null) return row;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return new Category(-1, null, null);
+        return row;
     }
 
     @Override
@@ -72,24 +75,50 @@ public class CategoryDb extends DatabaseConnection implements ICategoryDb {
         }
     }
 
+    @Override
+    public int getPostsCount(int categoryId) {
+        int result = 0;
+        try {Connection connection = super.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT count(id) AS postsCount FROM post WHERE categoryId = ?");
+            preparedStatement.setInt(1, categoryId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()){
+                result = resultSet.getInt("postsCount");
+            }
+            return result;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @Override
+    public void updatePoststsCount(int poststsCount, int categoryId) {
+        try {Connection connection = super.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE categories SET postsCount = ? WHERE id = ?");
+            preparedStatement.setInt(1, poststsCount);
+            preparedStatement.setInt(2, categoryId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void retrieveCategoryRows(LinkedList<Category> posts, ResultSet resultSet) throws SQLException {
         while (resultSet.next()){
-            Category row = new Category(
-                    resultSet.getInt("id"),
-                    resultSet.getString("name"),
-                    resultSet.getString("description"));
-            posts.add(row);
+            posts.add(retrieveCategoryRow(resultSet));
         }
     }
 
     private Category retrieveCategoryRow(ResultSet resultSet) throws SQLException {
-        while (resultSet.next()){
-            Category row = new Category(
-                    resultSet.getInt("id"),
-                    resultSet.getString("name"),
-                    resultSet.getString("description"));
-            return row;
+        Category row = new Category(
+                resultSet.getInt("id"),
+                resultSet.getString("name"),
+                resultSet.getString("description"));
+        Integer postsCountDbValue = resultSet.getInt("postsCount");
+        if (postsCountDbValue != null){
+            row.setPostsCount(postsCountDbValue);
         }
-        return null;
+        return row;
     }
 }

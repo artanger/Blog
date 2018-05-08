@@ -88,11 +88,14 @@ public class PostServlet extends HttpServlet {
                         addedPost.setTime(LocalDateTime.now());
                         addedPost.setCategoryId(categoryId);
                         addedPost.setIntroduction(introduction);
-                        postSource.addPost(addedPost);
+                        this.postSource.addPost(addedPost);
+                        int categoryIdInt = Integer.parseInt(categoryId);
+                        int postsCount = this.categoryDal.getPostsCount(categoryIdInt);
+                        this.categoryDal.updatePoststsCount(postsCount, categoryIdInt);
                     }
                 } else if ("deletepost".equalsIgnoreCase(action)) {
                     String postId = req.getParameter("postid");
-                    postSource.deletePost(postId);
+                    this.postSource.deletePost(postId);
 
                 } else if ("savepost".equalsIgnoreCase(action)) {
                     String postId = req.getParameter("postid");
@@ -103,7 +106,10 @@ public class PostServlet extends HttpServlet {
                     Post savedPost = new Post(Integer.parseInt(postId), title, text);
                     savedPost.setCategoryId(categoryId);
                     savedPost.setIntroduction(introduction);
-                    postSource.savePost(savedPost);
+                    this.postSource.savePost(savedPost);
+                    int categoryIdInt = Integer.parseInt(categoryId);
+                    int postsCount = this.categoryDal.getPostsCount(categoryIdInt);
+                    this.categoryDal.updatePoststsCount(postsCount, categoryIdInt);
                 }
             }
             doGet(req, resp);
