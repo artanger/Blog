@@ -7,7 +7,7 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(to left, #0f0c29, #302b63, #24243e);
+
 }
 
 .header {
@@ -47,13 +47,10 @@ ul li{
 }
 a{
     text-decoration: none;
-    color: /*#1d1e1f;*/  #0056b3;
+
 
 }
-a:hover{
-    text-decoration: none;
-    color: #f3fdff;
-}
+
 
 #postinfo  {
     padding: 15px 0px 20px 30px;
@@ -126,22 +123,4 @@ a:hover{
     padding: 0;
     font-size: 15px;
     text-align: left;
-}
-
-.card{
-    margin: 0 auto;
-
-}
-.mybtn {
-    color: #fff;
-    margin: 10px auto;
-    padding: 10px;
-    border-radius: 25px;
-    width: 150px;
-    background-color: #e91e63;
-    font-family: Sans-serif;
-}
-.mybtn:hover{
-
-    box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2), 0 13px 24px -11px rgb(255, 35, 116);
 }
