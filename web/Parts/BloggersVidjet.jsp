@@ -10,9 +10,12 @@
 <%@ page import="datasource.src.StringUtils" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% LinkedList<Profile> users = (LinkedList<Profile>)request.getAttribute("profile");%>
+
 <div class="bloggers">
     <h4 class="d-flex justify-content-between align-items-center mb-3">
-        <span >Our Bloggers</span>
+
+        <a href="/ourbloggers" class="btn btn-link">Our Bloggers</a>
+
         <span class="badge badge-secondary badge-pill"><%=users.size()%></span>
     </h4>
     <ul class="list-group mb-3">
