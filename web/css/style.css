@@ -59,25 +59,27 @@ a{
     border-bottom: 1px solid #e0e0e0;
 }
 
-.mylink{
+/*.mylink{
     color: #007bff;
 }
 
 .mylink:hover{
     text-decoration: none;
     cursor: pointer;
-}
+}*/
 
 .side h4 {
     color: #b94a48;
     margin: 0 5px;
 }
-
+.side h4:hover, .side h4:focus {
+    color: #0056b3;
+}
 .side .badge-secondary {
     color: #fff;
-    background: linear-gradient(to right, #3c00e9, #99fff8);
-
-
+    /*background: linear-gradient(to right, #3c00e9, #99fff8);*/
+   /* background-color: #b94a48;*/
+    background-color: #b34a48e6;
 }
 
 .bloggers img.avatar {
@@ -102,6 +104,14 @@ a{
 }
 .bloggers li.list-group-item a:hover, .categories li.list-group-item a:hover {
     text-decoration: none;
+}
+.bloggers a.title, .categories a.title {
+    text-decoration: none;
+    color: #0056b3;
+}
+.categories .list-group-item.active {
+    border-left-width: 10px;
+    background-color: transparent;
 }
 .borderless {
     border: none;
