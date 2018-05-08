@@ -14,7 +14,7 @@
     </a>
     <ul class="list-group mb-3">
         <% for(Category c:categories){
-        String active = !StringUtils.isNullOrEmpty(categoryId) && Integer.parseInt(categoryId) == c.getCategoryId() ? "active" : "";%>
+        String active = !StringUtils.isNullOrEmpty(categoryId) && Integer.parseInt(categoryId) == c.getCategoryId() ? "list-group-item-secondary" : "";%>
         <li class="list-group-item <%=active%>">
             <a class="" href="/category?id=<%=c.getCategoryId()%>">
                 <div>

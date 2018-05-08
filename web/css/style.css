@@ -110,8 +110,8 @@ a{
     color: #0056b3;
 }
 .categories .list-group-item.active {
-    border-left-width: 10px;
-    background-color: transparent;
+   /* border-left-width: 10px;
+    background-color: transparent;*/
 }
 .borderless {
     border: none;
