@@ -8,6 +8,7 @@
 <head>
     <title>Home Page</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/btnstyle.css">
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animhead.css">
@@ -66,7 +67,7 @@
                                 <p ><%=p.getIntroduction()%></p>
                             </div>
                             <div>
-                                <a href="/post?id=<%=p.getId()%>" class="btn btn-warning float-right">Read more ...</a>
+                                <a href="/post?id=<%=p.getId()%>" class="mybtn float-right">Read more ...</a>
                             </div>
 
 

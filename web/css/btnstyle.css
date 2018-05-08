@@ -1,0 +1,15 @@
+.mybtn {
+    color: #fff;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 25px;
+    width: 150px;
+    background-color: #3c00e9;
+    font-family: Sans-serif;
+    text-align: center;
+}
+.mybtn:hover{
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2), 0 13px 24px -11px rgb(50, 0, 233);
+}

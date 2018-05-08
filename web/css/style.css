@@ -57,10 +57,16 @@ a{
     margin: 20px 20px 20px;
     border-top: 1px solid #e0e0e0;
     border-bottom: 1px solid #e0e0e0;
-
-
 }
 
+.mylink{
+    color: #007bff;
+}
+
+.mylink:hover{
+    text-decoration: none;
+    cursor: pointer;
+}
 
 .side h4 {
     color: #b94a48;
@@ -69,7 +75,9 @@ a{
 
 .side .badge-secondary {
     color: #fff;
-    background-color: #b94a48;
+    background: linear-gradient(to right, #3c00e9, #99fff8);
+
+
 }
 
 .bloggers img.avatar {
