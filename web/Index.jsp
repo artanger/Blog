@@ -6,7 +6,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Profile</title>
+    <title>Home Page</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="css/style.css">
@@ -38,28 +38,11 @@
 
 <div class="container-fluid">
     <div class="row">
-
-        <div class="col-lg-3">
-            <h4 class="d-flex justify-content-between align-items-center mb-3">
-                <span >Categories</span>
-                <span class="badge badge-secondary badge-pill"><%=categories.size()%></span>
-            </h4>
-
-            <ul class="list-group mb-3">
-                <% for(Category c:categories){%>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0"><%=c.getName()%></h6>
-                        <small class="text-muted"><%=c.getDescription()%></small>
-                    </div>
-                    <span class="text-muted">0</span>
-                </li>
-                <%}%>
-            </ul>
-
+        <div class="col-3 side mt-4">
+            <jsp:include page="Parts/CategoriesVidjet.jsp" />
         </div>
 
-        <div class="col-lg-6 ">
+        <div class="col-6 mt-4">
             <div class="content" >
                 <% for(Post p:posts){%>
                 <div class="containerpost">
@@ -68,18 +51,21 @@
                             <h3 style="color: #b94a48;" ><%=p.getTitle()%></h3>
                             <ul id="postinfo">
                                 <li>
-                                    <i class="fas fa-clipboard-list"></i><%=p.getCategoryName()%>
+                                    <a href="/category?id=<%=p.getCategoryId()%>">
+                                        <i class="fas fa-clipboard-list"></i><%=p.getCategoryName()%>
+                                    </a>
                                 </li>
-
                                 <li>
                                     <a href="/bloger?id=<%=p.getUserId()%>">
                                         <i class="fas fa-user-circle"></i><%=p.getUserShortName()%>
                                     </a>
                                 </li>
                                 <li>
-                                    <i class="far fa-clock"></i><%=p.getTime()%>
+                                    <i class="far fa-clock"></i><%=p.getTimeFormatted()%>
                                 </li>
-
+                                <li>
+                                    <i class="far fa-clock"></i><%=p.getCommentsCount()%>
+                                </li>
                             </ul>
                             <div class="txtpost">
                                 <p ><%=p.getIntroduction()%></p>
@@ -99,26 +85,8 @@
         </div>
 
 
-        <div class="col-lg-3">
-            <h4 class="d-flex justify-content-between align-items-center mb-3">Our Bloggers</h4>
-            <ul class="list-group ">
-                <% for(Profile pr:users){
-                String imgsrc = !StringUtils.isNullOrWhitespace(pr.getImageSrc())?"img/"+pr.getImageSrc(): "//via.placeholder.com/50x50";%>
-                <li class="list-group-item ">
-                    <img src="<%=imgsrc%>" alt="" style="width: 50px; height: 50px;" class="rounded-circle">
-                    <div class="align-items-center">
-
-                        <h6><%=pr.getFirstName()%></h6>
-                        <h6 ><%=pr.getLastName()%></h6>
-                        <h6 ><%=pr.getHighlight()%></h6>
-
-
-
-                    </div>
-
-                </li>
-                <%}%>
-            </ul>
+        <div class="col-3 side mt-4" >
+            <jsp:include page="Parts/BloggersVidjet.jsp" />
         </div>
     </div>
 

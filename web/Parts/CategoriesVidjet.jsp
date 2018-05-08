@@ -10,12 +10,17 @@
     </h4>
     <ul class="list-group mb-3">
         <% for(Category c:categories){%>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <div>
-                <h5 class="my-0"><%=c.getName()%></h5>
-                <small class="text-muted"><%=c.getDescription()%></small>
-            </div>
-            <span class="text-muted">0</span>
+        <li class="list-group-item">
+            <a class="" href="/category?id=<%=c.getCategoryId()%>">
+                <div>
+                    <h5 class="my-0 d-flex justify-content-between align-items-center">
+                        <span><%=c.getName()%></span>
+                        <span class="badge badge-secondary badge-pill">0</span>
+                    </h5>
+                    <small class="text-muted"><%=c.getDescription()%></small>
+                </div>
+
+            </a>
         </li>
         <%}%>
     </ul>

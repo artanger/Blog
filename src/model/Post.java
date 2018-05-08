@@ -3,6 +3,9 @@ package model;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.Date;
 
 public class Post {
     private int id;
@@ -16,6 +19,7 @@ public class Post {
     private String userLastName = "";
     private String introduction;
     private int commentsCount;
+    private LocalDateTime timeDate;
 
     public Post(int id, String title, String text) {
         this.id = id;
@@ -57,11 +61,11 @@ public class Post {
     public String getTime() { return time; }
     public void setTime(LocalDateTime time) {
         this.time = time.toString();
+        this.timeDate = time;
     }
-   /* public String getBirthDateFormatted() {
-        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-        return df.format(birthDate);
-    }*/
+    public String getTimeFormatted() {
+        return this.timeDate.toLocalDate().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
+    }
 
     public int getUserId() { return userId; }
     public void setUserId(int userId) {

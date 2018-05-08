@@ -86,15 +86,16 @@ a:hover{
     cursor: pointer;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 }
-.bloggers li.list-group-item {
+.bloggers li.list-group-item, .categories li.list-group-item {
     /* margin: 0;*/
     padding: 0;
 }
-.bloggers li.list-group-item a {
+.bloggers li.list-group-item a, .categories li.list-group-item a {
     display: inline-block;
     padding: 15px;
+    width: 100%;
 }
-.bloggers li.list-group-item a:hover {
+.bloggers li.list-group-item a:hover, .categories li.list-group-item a:hover {
     text-decoration: none;
 }
 .borderless {

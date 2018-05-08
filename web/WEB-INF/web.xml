@@ -132,6 +132,17 @@
         <servlet-name>PostDetailsServlet</servlet-name>
         <url-pattern>/post</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>PostCategoryServlet</servlet-name>
+        <servlet-class>PostCategoryServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>PostCategoryServlet</servlet-name>
+        <url-pattern>/category</url-pattern>
+    </servlet-mapping>
+
+
 
     <filter>
         <filter-name>authFilter</filter-name>
