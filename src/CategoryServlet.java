@@ -1,5 +1,6 @@
 import datasource.abs.ICategoryDb;
 import datasource.src.CategoryDb;
+import datasource.src.StringUtils;
 import model.Category;
 import model.Principal;
 
@@ -68,7 +69,10 @@ public class CategoryServlet extends HttpServlet {
                 }
             } else if ("deletecategory".equalsIgnoreCase(action)) {
                 String categoryId = req.getParameter("categoryid");
-                this.categoryDal.deleteCategory(categoryId);
+                String disabled = req.getParameter("disabled");
+                if (StringUtils.isNullOrEmpty(disabled)){
+                    this.categoryDal.deleteCategory(categoryId);
+                }
             } else if ("savecategory".equalsIgnoreCase(action)) {
                 String categoryId = req.getParameter("id");
                 String name = req.getParameter("name");
