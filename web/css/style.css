@@ -23,15 +23,6 @@ body {
 
 }
 
-
-.cardpost{
-
-
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-
 .txt {
     display: inline-block;
     color: #1d1e1f;
@@ -47,18 +38,33 @@ ul li{
 }
 a{
     text-decoration: none;
-
-
 }
 
-
-#postinfo  {
-    padding: 15px 0px 20px 30px;
-    margin: 20px 20px 20px;
+.cardpost {
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+.cardpost .title {
+    color: #b94a48;
+    margin-bottom: 0!important;
+}
+.contentpost .cardpost .postinfo  {
+    padding: 15px 5px 12px 5px;
+    margin: 12px 0px 15px 0;
     border-top: 1px solid #e0e0e0;
     border-bottom: 1px solid #e0e0e0;
 }
-
+.contentpost .cardpost .postinfo li a {
+    padding: 0 20px 0 0;
+}
+.contentpost .cardpost .postinfo li a i {
+    margin-right: 8px;
+    font-size: 25px;
+}
+.contentpost .cardpost .postinfo li a span {
+    top: -2px;
+    position: relative;
+}
 /*.mylink{
     color: #007bff;
 }

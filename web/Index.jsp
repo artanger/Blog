@@ -43,35 +43,22 @@
                 <% for(Post p:posts){%>
                 <div class="containerpost">
                     <div class="contentpost">
-                        <div class="cardpost "  >
-                            <h3 style="color: #b94a48;" ><%=p.getTitle()%></h3>
-                            <ul id="postinfo">
-                                <li>
-                                    <a href="/category?id=<%=p.getCategoryId()%>">
-                                        <i class="fas fa-clipboard-list"></i><%=p.getCategoryName()%>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/bloger?id=<%=p.getUserId()%>">
-                                        <i class="fas fa-user-circle"></i><%=p.getUserShortName()%>
-                                    </a>
-                                </li>
-                                <li>
-                                    <i class="far fa-clock"></i><%=p.getTimeFormatted()%>
-                                </li>
-                                <li>
-                                    <i class="far fa-clock"></i><%=p.getCommentsCount()%>
-                                </li>
-                            </ul>
+                        <div class="cardpost">
+                            <h3 class="title"><%=p.getTitle()%></h3>
+                            <jsp:include page="Parts/PostsInfoPanel.jsp">
+                                <jsp:param name="categoryId" value="<%=p.getCategoryId()%>" />
+                                <jsp:param name="categoryName" value="<%=p.getCategoryName()%>" />
+                                <jsp:param name="userId" value="<%=p.getUserId()%>" />
+                                <jsp:param name="userShortName" value="<%=p.getUserShortName()%>" />
+                                <jsp:param name="timeFormatted" value="<%=p.getTimeFormatted()%>" />
+                                <jsp:param name="commentsCount" value="<%=p.getCommentsCount()%>" />
+                            </jsp:include>
                             <div class="txtpost">
                                 <p ><%=p.getIntroduction()%></p>
                             </div>
-                            <div>
+                            <div class="text-right">
                                 <a href="/post?id=<%=p.getId()%>" class="mybtn float-right">Read more ...</a>
                             </div>
-
-
-
                         </div>
                     </div>
                 </div>
