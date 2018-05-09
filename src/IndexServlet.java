@@ -29,7 +29,7 @@ public class IndexServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-            LinkedList<Post> posts = this.postSource.getRecentPosts(5);
+            LinkedList<Post> posts = this.postSource.getRecentPosts(10);
             req.setAttribute("post", posts);
 
             LinkedList<Profile> users = this.userDal.getAllProfiles();

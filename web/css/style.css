@@ -42,11 +42,30 @@ a{
 
 .cardpost {
     padding: 0 20px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 .cardpost .title {
     color: #b94a48;
     margin-bottom: 0!important;
+}
+.cardpost .read-more {
+    margin-top: -10px;
+}
+/*
+.cardpost img.avatar-big {
+    max-width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}*/
+
+.cardpost img.avatar-big {
+    max-width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-right: 20px;
+    margin-bottom: 10px;
+    float: left;
+}
+.cardpost .blogger-info {
+
 }
 .contentpost .cardpost .postinfo  {
     padding: 15px 5px 12px 5px;

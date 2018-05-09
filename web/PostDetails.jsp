@@ -7,21 +7,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Profile</title>
+    <title>Post</title>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/animhead.css">
 <link rel="stylesheet" href="css/fontawesome-all.min.css" />
-<%--<script src="http://cloud.tinymce.com/stable/tinymce.min.js"></script>--%>
-<%--<script>tinymce.init({ selector:'textarea' });</script>--%>
 </head>
 <body>
 <% Post postdetails = (Post)request.getAttribute("postdetails");%>
-<% LinkedList<Post> posts = (LinkedList<Post>)request.getAttribute("post");%>
-
 <% LinkedList<Comment> comments = (LinkedList<Comment>)request.getAttribute("comments");%>
-
-
 <div class="header">
     <div class="contentwrap">
         <ul class="fly-in-text">
@@ -54,7 +48,9 @@
                                 <jsp:param name="timeFormatted" value="<%=postdetails.getTimeFormatted()%>" />
                                 <jsp:param name="commentsCount" value="<%=postdetails.getCommentsCount()%>" />
                             </jsp:include>
+                            <h5>Introduction</h5>
                             <p><%=postdetails.getIntroduction()%></p>
+                            <h5>Topic</h5>
                             <p><%=postdetails.getText()%></p>
                             <hr class="mb-4">
                             <% if (comments.size() > 0) {%>
@@ -82,14 +78,14 @@
                                 <form class="needs-validation" action="/post?id=<%=postdetails.getId()%>" method="post">
                                     <div class="row">
                                         <div class="col mb-3">
-                                            <label for="author">Your Name</label>
+                                            <label for="author" class="sr-only">Your Name</label>
                                             <input type="text" class="form-control" id="author" name="author" placeholder="Enter Your Name" maxlength="250" required>
                                             <div class="invalid-feedback">Name is required.</div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col mb-3">
-                                            <label for="text">Comment</label>
+                                            <label for="text" class="sr-only">Comment</label>
                                             <textarea class="form-control" id="text" name="text" placeholder="Write a Response" rows="4" maxlength="1000" required></textarea>
                                             <div class="invalid-feedback">Text for comment is required.</div>
                                         </div>

@@ -1,20 +1,14 @@
 <%@ page import="model.Post" %>
 <%@ page import="java.util.LinkedList" %>
-<%@ page import="model.Profile" %>
-<%@ page import="datasource.src.StringUtils" %>
-<%@ page import="model.Category" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Home Page</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/btnstyle.css">
-
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animhead.css">
     <link rel="stylesheet" href="css/fontawesome-all.min.css" />
-    <%--<script src="http://cloud.tinymce.com/stable/tinymce.min.js"></script>--%>
-    <%--<script>tinymce.init({ selector:'textarea' });</script>--%>
 </head>
 <body>
 <% LinkedList<Post> posts = (LinkedList<Post>)request.getAttribute("post");%>
@@ -37,7 +31,6 @@
         <div class="col-3 side mt-4">
             <jsp:include page="Parts/CategoriesVidjet.jsp" />
         </div>
-
         <div class="col-6 mt-4">
             <div class="content" >
                 <% for(Post p:posts){%>
@@ -56,25 +49,21 @@
                             <div class="txtpost">
                                 <p ><%=p.getIntroduction()%></p>
                             </div>
-                            <div class="text-right">
-                                <a href="/post?id=<%=p.getId()%>" class="mybtn float-right">Read more ...</a>
+                            <div class="row read-more">
+                                <div class="col">
+                                    <a href="/post?id=<%=p.getId()%>" class="btn btn-sm btn-warning float-right">Read more ...</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <%}%>
             </div>
-
         </div>
-
-
         <div class="col-3 side mt-4" >
             <jsp:include page="Parts/BloggersVidjet.jsp" />
         </div>
     </div>
-
-
-
 </div>
 
 

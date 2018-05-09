@@ -47,22 +47,17 @@
                             <div class="txtpost">
                                 <p ><%=p.getIntroduction()%></p>
                             </div>
-                            <div>
-                                <a href="/post?id=<%=p.getId()%>" class="btn btn-warning float-right">Read more ...</a>
+                            <div class="row read-more">
+                                <div class="col">
+                                    <a href="/post?id=<%=p.getId()%>" class="btn btn-sm btn-warning float-right">Read more ...</a>
+                                </div>
                             </div>
-
-
-
                         </div>
                     </div>
                 </div>
                 <%}%>
-
-
-
             </div>
         </div>
-
         <div class="col-3 side mt-4" >
             <jsp:include page="Parts/BloggersVidjet.jsp" />
         </div>
