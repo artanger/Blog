@@ -31,7 +31,6 @@
         <td>
             <form method="post">
                 <button type="submit" class="btn btn-link" title="Delete categories"><i class="fas fa-trash-alt"></i></button>
-                <%--<input type="submit"  class="btn btn-link" value=" X "><i class="fas fa-trash-alt"></i>--%>
                 <input type="hidden" name="action" value="deletecategory" />
                 <input type="hidden" name="categoryid" value="<%=c.getCategoryId()%>" />
             </form>
