@@ -41,60 +41,67 @@
             <jsp:include page="Parts/CategoriesVidjet.jsp" />
         </div>
         <div class="col-6 mt-4" >
-            <div class="content" >
-                <h1><%=postdetails.getTitle()%></h1>
-                <p><%=postdetails.getIntroduction()%></p>
-                <p><%=postdetails.getText()%></p>
-                <p><%=postdetails.getUserShortName()%></p>
-                <p><%=postdetails.getTime()%></p>
-                <p><%=postdetails.getCategoryName()%></p>
-                <p><%=postdetails.getCategoryId()%></p>
-                <p><%=postdetails.getCommentsCount()%></p>
-
-                <% if (comments.size() > 0) {%>
-                <div class="comments">
-                    <h4>Comments</h4>
-                    <ul class="ist-group" >
-                    <% for(Comment cm:comments){%>
-                    <li class="list-group-item">
-                        <img class="avatar" src="img/avatar_incognito.png" alt="avatar for comment" />
-                        <div class="content">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h6 class="author"><%=cm.getAuthor()%>:</h6>
-                                <small><%=cm.getCreationTime()%></small>
+            <div class="content">
+                <div class="containerpost">
+                    <div class="contentpost">
+                        <div class="cardpost">
+                            <h3 class="title"><%=postdetails.getTitle()%></h3>
+                            <jsp:include page="Parts/PostsInfoPanel.jsp">
+                                <jsp:param name="categoryId" value="<%=postdetails.getCategoryId()%>" />
+                                <jsp:param name="categoryName" value="<%=postdetails.getCategoryName()%>" />
+                                <jsp:param name="userId" value="<%=postdetails.getUserId()%>" />
+                                <jsp:param name="userShortName" value="<%=postdetails.getUserShortName()%>" />
+                                <jsp:param name="timeFormatted" value="<%=postdetails.getTimeFormatted()%>" />
+                                <jsp:param name="commentsCount" value="<%=postdetails.getCommentsCount()%>" />
+                            </jsp:include>
+                            <p><%=postdetails.getIntroduction()%></p>
+                            <p><%=postdetails.getText()%></p>
+                            <hr class="mb-4">
+                            <% if (comments.size() > 0) {%>
+                            <div class="comments">
+                                <h4>Comments</h4>
+                                <ul class="ist-group" >
+                                <% for(Comment cm:comments){%>
+                                <li class="list-group-item">
+                                    <img class="avatar" src="img/avatar_incognito.png" alt="avatar for comment" />
+                                    <div class="content">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="author"><%=cm.getAuthor()%>:</h6>
+                                            <small><%=cm.getCreationTime()%></small>
+                                        </div>
+                                        <p class="comment-text"><%=cm.getText()%></p>
+                                    </div>
+                                </li>
+                                <%}%>
+                                </ul>
                             </div>
-                            <p class="comment-text"><%=cm.getText()%></p>
+                            <hr class="mb-4">
+                            <%}%>
+                            <div class="add-comment">
+                                <h4 class="mb-3">Add comment</h4>
+                                <form class="needs-validation" action="/post?id=<%=postdetails.getId()%>" method="post">
+                                    <div class="row">
+                                        <div class="col mb-3">
+                                            <label for="author">Your Name</label>
+                                            <input type="text" class="form-control" id="author" name="author" placeholder="Enter Your Name" maxlength="250" required>
+                                            <div class="invalid-feedback">Name is required.</div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col mb-3">
+                                            <label for="text">Comment</label>
+                                            <textarea class="form-control" id="text" name="text" placeholder="Write a Response" rows="4" maxlength="1000" required></textarea>
+                                            <div class="invalid-feedback">Text for comment is required.</div>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary " type="submit">Post comment</button>
+                                    <input type="hidden" name="action" value="newcomment" />
+                                    <input type="hidden" name="postId" value="<%=postdetails.getId()%>" />
+                                </form>
+                            </div>
                         </div>
-                    </li>
-                    <%}%>
-                    </ul>
+                    </div>
                 </div>
-                <%}%>
-
-                <div class="add-comment">
-                    <h4 class="mb-3">Add comment</h4>
-                    <form class="needs-validation" action="/post?id=<%=postdetails.getId()%>" method="post">
-                        <div class="row">
-                            <div class="col mb-3">
-                                <label for="author">Your Name</label>
-                                <input type="text" class="form-control" id="author" name="author" placeholder="Enter Your Name" maxlength="250" required>
-                                <div class="invalid-feedback">Name is required.</div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col mb-3">
-                                <label for="text">Comment</label>
-                                <textarea class="form-control" id="text" name="text" placeholder="Write a Response" rows="4" maxlength="1000" required></textarea>
-                                <div class="invalid-feedback">Text for comment is required.</div>
-                            </div>
-                        </div>
-                        <hr class="mb-4">
-                        <button class="btn btn-primary " type="submit">Post comment</button>
-                        <input type="hidden" name="action" value="newcomment" />
-                        <input type="hidden" name="postId" value="<%=postdetails.getId()%>" />
-                    </form>
-                </div>
-
             </div>
         </div>
 
