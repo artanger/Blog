@@ -67,7 +67,7 @@ public class CategoryServlet extends HttpServlet {
                     this.categoryDal.addCategory(addedCategory);
                 }
             } else if ("deletecategory".equalsIgnoreCase(action)) {
-                String categoryId = req.getParameter("id");
+                String categoryId = req.getParameter("categoryid");
                 this.categoryDal.deleteCategory(categoryId);
             } else if ("savecategory".equalsIgnoreCase(action)) {
                 String categoryId = req.getParameter("id");
