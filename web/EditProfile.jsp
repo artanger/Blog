@@ -22,20 +22,13 @@
                 <div class="form-group row">
                     <div class="col-6">
                         <label class="col-form-label">First Name</label>
-                        <input class="form-control col-12"  type="text" name="firstname" id="firstname" value="<%=profileModel.getFirstName()%>">
+                        <input class="form-control col-12"  type="text" name="firstname" id="firstname" maxlength="45" value="<%=profileModel.getFirstName()%>">
                     </div>
                     <div class="col-6">
                         <label class="col-form-label">Last Name</label>
-                        <input class="form-control col-12"  type="text" name="lastname" id="lastname" value="<%=profileModel.getLastName()%>">
+                        <input class="form-control col-12"  type="text" name="lastname" id="lastname" maxlength="45" value="<%=profileModel.getLastName()%>">
                     </div>
                 </div>
-                <div class="form-group">
-
-                </div>
-                <div class="form-group">
-
-                </div>
-
                 <div class="form-group row">
                     <div class="col-6">
                         <label class="col-form-label">Choose image:</label>
@@ -48,19 +41,17 @@
                         <label class="col-form-label">Birthdate</label>
                         <input class="form-control col-12 datepicker"  type="date" name="birthdate" id="birthdate" value="<%=profileModel.getBirthDate()%>">
                         <label class="col-form-label">Highlight</label>
-                        <input class="form-control col-12"  type="text" name="highlight" id="highlight" value="<%=profileModel.getHighlight()%>">
+                        <input class="form-control col-12"  type="text" name="highlight" id="highlight" maxlength="500" value="<%=profileModel.getHighlight()%>">
+                        <label class="col-form-label">Description</label>
+                        <textarea rows="10" name="description" id="description" class="form-control col-12" maxlength="2000"><%=profileModel.getDescription()%></textarea>
+                        </br>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-share-square mr-1"></i>Save
+                        </button>
+                        <input type="hidden" name="action" value="savecurrentprofile" />
+                        <input type="hidden" name="userid" value="<%=profileModel.getUserId()%>" />
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <label class="col-form-label">Description</label>
-                    <textarea rows="4" name="description" id="description" class="form-control col-12"><%=profileModel.getDescription()%></textarea>
-                    </br>
-                    <input type="submit" value="Save" class="btn btn-primary">
-                    <input type="hidden" name="action" value="savecurrentprofile" />
-                    <input type="hidden" name="userid" value="<%=profileModel.getUserId()%>" />
-                </div>
-
             </form>
         </div>
     </div>

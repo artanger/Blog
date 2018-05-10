@@ -40,7 +40,7 @@
                     <label class="col-sm-2 col-form-label">Text</label>
                     <textarea rows="6" name="text" id="text" class="form-control col-12 mce"><%=post.getText()%></textarea>
                     </br>
-                    <input type="submit" value="Save" class="btn btn-outline-primary">
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-share-square mr-1"></i>Save</button>
                     <input type="hidden" name="action" value="savepost" />
                     <input type="hidden" name="postid" value="<%=post.getId()%>" />
                 </div>

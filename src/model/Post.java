@@ -64,7 +64,7 @@ public class Post {
         this.timeDate = time;
     }
     public String getTimeFormatted() {
-        return this.timeDate.toLocalDate().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
+        return this.timeDate.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM));
     }
 
     public int getUserId() { return userId; }

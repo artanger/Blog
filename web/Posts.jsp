@@ -29,7 +29,7 @@
     <tr >
         <td><%=p.getId()%></td>
         <td><%=p.getTitle()%></td>
-        <td><%=p.getTime()%></td>
+        <td><%=p.getTimeFormatted()%></td>
         <td><%=p.getCategoryName()%></td>
         <td><%=p.getUserShortName()%></td>
         <td><a href="?action=editpost&postid=<%=p.getId()%>" class="btn btn-link" title="Edit Post"><i class="fas fa-edit"></i></a></td>

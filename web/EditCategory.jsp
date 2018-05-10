@@ -24,7 +24,7 @@
                     <label class="col-sm-2 col-form-label">Description</label>
                     <textarea rows="4" name="description" id="description" class="form-control col-12"><%=cat.getDescription()%></textarea>
                     </br>
-                    <input type="submit" value="Save" class="btn btn-outline-primary">
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-share-square mr-1"></i>Save</button>
                     <input type="hidden" name="action" value="savecategory" />
                     <input type="hidden" name="id" value="<%=cat.getCategoryId()%>" />
                 </div>

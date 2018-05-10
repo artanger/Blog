@@ -35,8 +35,7 @@
                     <label  class="col-sm-2 col-form-label">Text</label>
                     <textarea rows="6" name="text" id="text" class="form-control col-12 mce"></textarea>
                 </div>
-
-                <input type="submit" value="Add Post" class="btn btn-outline-primary">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-share-square mr-1"></i>Add Post</button>
                 <input type="hidden" name="action" value="newpost" />
             </form>
         </div>

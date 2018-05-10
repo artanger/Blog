@@ -26,3 +26,12 @@ table.table-hover .btn {
     top: -9px;
     position: relative;
 }
+.nounderline {
+    text-decoration: none;
+}
+.nounderline:hover {
+    text-decoration: none;
+}
+.posts-header {
+    opacity: 0.92;
+}
