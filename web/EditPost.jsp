@@ -6,6 +6,8 @@
 <head>
     <title>Edit Post</title>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="css/admin-side.css">
 </head>
 <body>
 <jsp:include page="AdminPostHeader.jsp" />

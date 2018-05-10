@@ -3,10 +3,7 @@
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="${pageContext.request.contextPath}/index">
-<!--<img src="img/blog.jpg">-->
-        <i class="fab fa-blogger"></i><span>The Blog</span></a>
-
+    <a class="navbar-brand" href="${pageContext.request.contextPath}/index"><i class="fab fa-blogger"></i><span>The Blog</span></a>
     <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item"><a href="${pageContext.request.contextPath}/posts" class="nav-link">Admin Home</a></li>
@@ -22,6 +19,12 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkCategories">
                     <a class="dropdown-item" href="${pageContext.request.contextPath}/categories" >Categories List</a>
                     <a class="dropdown-item" href="${pageContext.request.contextPath}/categories?action=addcategory">Add Category</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkProfile">
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/currentprofile">Edit Profile</a>
                 </div>
             </li>
         </ul>

@@ -11,6 +11,7 @@
 <body>
 <% LinkedList<Post> posts = (LinkedList<Post>)request.getAttribute("post");%>
 <jsp:include page="AdminPostHeader.jsp" />
+<h2>Posts</h2>
 <table class="table table-hover">
     <thead class="bg-inverse text-white">
     <tr>
