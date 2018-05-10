@@ -17,7 +17,7 @@ public class Profile extends Principal {
     private Date startDate;
     private Blob image;
     private String imgsrc;
-    private int shortenLength = 110;
+    private int shortenLength = 105;
 
     public Profile(int profileId, String firstName, String lastName){
         this.profileId = profileId;
