@@ -17,6 +17,7 @@ public class Profile extends Principal {
     private Date startDate;
     private Blob image;
     private String imgsrc;
+    private int shortenLength = 110;
 
     public Profile(int profileId, String firstName, String lastName){
         this.profileId = profileId;
@@ -43,6 +44,14 @@ public class Profile extends Principal {
     public int getProfileId() { return profileId; }
 
     public String getHighlight() { return highlight; }
+
+    public String getShortenHighlight() {
+        if (this.highlight.length() > shortenLength){
+            return highlight.substring(0, shortenLength) + "...";
+        }
+        return highlight;
+    }
+
     //firstName
     public String getFirstName() { return firstName; }
     //lastName

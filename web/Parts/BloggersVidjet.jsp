@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Arthur
-  Date: 07.05.2018
-  Time: 13:45
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page import="model.Profile" %>
 <%@ page import="java.util.LinkedList" %>
 <%@ page import="datasource.src.StringUtils" %>
@@ -25,7 +18,7 @@
                 <img class="avatar" src="<%=imgsrc%>" alt="<%=pr.getFirstName()%> <%=pr.getLastName()%>" >
                 <div>
                     <h5 class="my-0"><%=pr.getFirstName()%> <%=pr.getLastName()%></h5>
-                    <small class="text-muted"><%=pr.getHighlight()%></small>
+                    <small class="text-muted"><%=pr.getShortenHighlight()%></small>
                 </div>
 
             </a>
