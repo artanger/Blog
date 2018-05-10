@@ -33,7 +33,7 @@
         <td><%=p.getUserShortName()%></td>
         <td><a href="?action=editpost&postid=<%=p.getId()%>" class="btn btn-link" title="Edit Post"><i class="fas fa-edit"></i></a></td>
         <td>
-            <form method="post">
+            <form method="post" class="mb-0">
                 <button type="submit" class="btn btn-link" title="Delete Post"><i class="fas fa-trash-alt"></i></button>
                 <input type="hidden" name="action" value="deletepost" />
                 <input type="hidden" name="postid" value="<%=p.getId()%>" />

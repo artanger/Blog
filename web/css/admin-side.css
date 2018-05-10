@@ -18,3 +18,11 @@
 table.table-hover .btn {
     display: block;
 }
+.navbar .navbar-brand i {
+    font-size: 45px;
+    margin: 0 15px 0 0;
+}
+.navbar .navbar-brand span {
+    top: -9px;
+    position: relative;
+}

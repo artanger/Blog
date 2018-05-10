@@ -56,7 +56,7 @@
                     <label class="col-form-label">Description</label>
                     <textarea rows="4" name="description" id="description" class="form-control col-12"><%=profileModel.getDescription()%></textarea>
                     </br>
-                    <input type="submit" value="Save" class="btn btn-outline-primary">
+                    <input type="submit" value="Save" class="btn btn-primary">
                     <input type="hidden" name="action" value="savecurrentprofile" />
                     <input type="hidden" name="userid" value="<%=profileModel.getUserId()%>" />
                 </div>
