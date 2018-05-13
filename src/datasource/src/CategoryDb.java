@@ -21,6 +21,28 @@ public class CategoryDb extends DatabaseConnection implements ICategoryDb {
         return categories;
     }
 
+//    @Override
+//    public LinkedList<Category> getCategoriesByAuthor(int userId, int limit) {
+//        LinkedList<Category> categories = new LinkedList<>();
+//        try {Connection connection = super.getConnection();
+//            PreparedStatement stmt = connection.prepareStatement(
+//                    "SELECT c.*, c.name as categoryName, r.firstname as userFirstName, r.lastname as userLastName\n" +
+//                            "FROM categories p\n" +
+//                            "JOIN profile as c ON p.categoryId = c.id\n" +
+//                            "JOIN registration as r ON p.userId = r.id\n" +
+//                            "WHERE p.userId = ?\n" +
+//                            "ORDER BY p.time DESC LIMIT ?");
+//
+//            stmt.setInt(1, userId);
+//            stmt.setInt(2, limit);
+//            ResultSet resultSet = stmt.executeQuery();
+//            retrieveCategoryRows(categories, resultSet);
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return categories;
+//    }
+
     @Override
     public void addCategory(Category category) {
         try {Connection connection = super.getConnection();

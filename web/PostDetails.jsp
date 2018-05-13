@@ -1,9 +1,6 @@
+<%@ page import="model.Comment" %>
 <%@ page import="model.Post" %>
 <%@ page import="java.util.LinkedList" %>
-<%@ page import="model.Profile" %>
-<%@ page import="datasource.src.StringUtils" %>
-<%@ page import="model.Category" %>
-<%@ page import="model.Comment" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>

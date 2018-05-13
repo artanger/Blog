@@ -1,6 +1,8 @@
 package model;
 
-public class Category {
+import java.util.LinkedList;
+
+public class Category extends LinkedList<Category> {
     private int categoryId;
     private String name;
     private String description;

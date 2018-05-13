@@ -1,7 +1,6 @@
+<%@ page import="model.Post" %>
 <%@ page import="model.Profile" %>
 <%@ page import="java.util.LinkedList" %>
-<%@ page import="java.util.Map" %>
-<%@ page import="model.Post" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -11,7 +10,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animhead.css">
     <link rel="stylesheet" href="css/fontawesome-all.min.css" />
-    <!--<link rel="stylesheet" href="css/blogerpage.css">-->
+
 </head>
 <body>
 <% Profile profileModel = (Profile)request.getAttribute("ProfileModel");%>

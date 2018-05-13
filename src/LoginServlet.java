@@ -21,8 +21,7 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // HttpSession session = req.getSession();
-        // session.invalidate();
+
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("Login.jsp");
         dispatcher.forward(req, resp);
@@ -40,9 +39,8 @@ public class LoginServlet extends HttpServlet {
             if (principal != null){
                 HttpSession session = req.getSession();
                 session.setAttribute("PRINCIPAL", principal);
-                resp.sendRedirect("/posts");
-               // RequestDispatcher dispatcher = req.getRequestDispatcher("Posts.jsp");
-               // dispatcher.forward(req, resp);
+                resp.sendRedirect("/adminpage");
+
             }
         }
         try (PrintWriter out = resp.getWriter()) {

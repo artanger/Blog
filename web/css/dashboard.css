@@ -1,0 +1,30 @@
+.card{
+    margin: 0 auto;
+
+}
+
+.shcard{
+    box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+.mybtn {
+    color: #fff;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 25px;
+    width: 150px;
+    background-color: #3c00e9;
+    font-family: Sans-serif;
+}
+.mybtn:hover{
+    box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2), 0 13px 24px -11px rgb(50, 0, 233);
+}
+
+
+
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+    color: #f3fdff;
+}

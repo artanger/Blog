@@ -137,6 +137,17 @@
     </servlet-mapping>
 
 
+    <!--AdminPage-->
+    <servlet>
+        <servlet-name>AdminPageServlet</servlet-name>
+        <servlet-class>AdminPageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminPageServlet</servlet-name>
+        <url-pattern>/adminpage</url-pattern>
+    </servlet-mapping>
+
+
 
     <filter>
         <filter-name>authFilter</filter-name>
@@ -147,6 +158,7 @@
         <url-pattern>/posts</url-pattern>
         <url-pattern>/currentprofile</url-pattern>
         <url-pattern>/categories</url-pattern>
+        <url-pattern>/adminpage</url-pattern>
     </filter-mapping>
 
 

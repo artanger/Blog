@@ -6,6 +6,8 @@ import java.util.LinkedList;
 public interface ICategoryDb {
     LinkedList<Category> getCategories();
 
+//    LinkedList<Category> getCategoriesByAuthor(int userId, int limit);
+
     void addCategory(Category category);
 
     void saveCategory(Category category);
