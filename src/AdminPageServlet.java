@@ -35,7 +35,7 @@ public class AdminPageServlet extends HttpServlet {
         HttpSession session = req.getSession();
         Principal principal = (Principal) session.getAttribute("PRINCIPAL");
         req.setAttribute("shortname", principal.getShortName());
-
+        Integer userId = principal.getUserId();
         String username = principal.getUsername();
         String password = principal.getPassword();
         Profile profileModel = this.userDal.getCurrentProfile(username, password);
@@ -44,13 +44,16 @@ public class AdminPageServlet extends HttpServlet {
         LinkedList<Category> categories = this.categoryDal.getCategories();
         req.setAttribute("categories", categories);
 
-//        LinkedList<Category> bycategory = this.categoryDal.getCategoriesByAuthor();
+        LinkedList<Post> posts = this.postSource.getPosts(userId);
+        req.setAttribute("post", posts);
 
-
+        int allCommentsCount = 0;
+        for (Post post : posts) {
+            allCommentsCount = allCommentsCount + post.getCommentsCount();
+        }
+        req.setAttribute("allCommentsCount", Integer.toString(allCommentsCount));
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("AdminPage.jsp");
         dispatcher.forward(req, resp);
     }
-
-
 }

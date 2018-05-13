@@ -20,6 +20,7 @@
         <th scope="col">Date</th>
         <th scope="col">Category</th>
         <th scope="col">User</th>
+        <th scope="col">Comments Count</th>
         <th scope="col">Edit</th>
         <th scope="col">Delete</th>
     </tr>
@@ -32,6 +33,7 @@
         <td><%=p.getTimeFormatted()%></td>
         <td><%=p.getCategoryName()%></td>
         <td><%=p.getUserShortName()%></td>
+        <td><%=p.getCommentsCount()%></td>
         <td><a href="?action=editpost&postid=<%=p.getId()%>" class="btn btn-link" title="Edit Post"><i class="fas fa-edit"></i></a></td>
         <td>
             <form method="post" class="mb-0">

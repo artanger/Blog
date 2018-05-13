@@ -35,3 +35,10 @@ table.table-hover .btn {
 .posts-header {
     opacity: 0.92;
 }
+.dashboard .shcard {
+    width: 18rem;
+}
+.dashboard img.avatar {
+    width: 200px;
+    height: 200px;
+}
